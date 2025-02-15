@@ -1,17 +1,77 @@
 
-body {
-    background-image: url('https://raw.githubusercontent.com/Oskr1994/Artz/main/Imagenes/Fondo1.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+.btn-instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #bc1888, #5c2a86); 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.hero-section {
+    background: url('Imagenes/Fondo1.jpg') no-repeat center center; /* Imagen de fondo */
+    background-size: cover; /* Ajusta la imagen */
+    height: 100vh; /* Altura de toda la pantalla */
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: center;
+}
+
+.neon-text {
+    color: #0ff;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #00f, 0 0 40px #00f;
+    font-weight: bold;
+}
+
+.btn-instagram {
+    background-color: #E4405F; /* Color de Instagram */
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.btn-instagram:hover {
+    background-color: #C13584; /* Color más oscuro al pasar el mouse */
+}
+
+
+.btn-instagram:hover {
+    filter: brightness(1.2); /* Efecto de brillo al pasar el mouse */
 }
 
 
 .navbar {
-    padding: 15px;
+    padding: 3px;
 }
 
-h1 {
+.texto-3d {
+    font-size: 50px;
+    font-weight: bold;
     color: white;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 3px 3px 0px #ff0000, /* Sombra roja */
+                 6px 6px 0px #0000ff, /* Sombra azul */
+                 9px 9px 5px rgba(0, 0, 0, 0.5); /* Sombra negra difusa */
+}
+
+
+.btn-artz {
+    background-color: transparent; /* Mismo color de fondo de la barra */
+    color: black; /* Texto negro */
+    border: none;
+    font-weight: bold;
+    padding: 8px 15px;
+    transition: background-color 0.3s, color 0.3s; /* Transición suave */
+}
+
+.btn-artz:hover {
+    background-color: black; /* Fondo negro al pasar el mouse */
+    color: white; /* Texto blanco */
 }
