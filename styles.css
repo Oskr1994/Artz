@@ -1,0 +1,17 @@
+
+body {
+    background-image: url('https://oskr1994.github.io/Artz/imagenes/fondo1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.navbar {
+    padding: 15px;
+}
+
+h1 {
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
