@@ -1,4 +1,6 @@
-
+.navbar {
+    display: none;
+}
 
 .hero-section {
     background: url('Imagenes/fondo.jpg') no-repeat center center; /* Imagen de fondo */
@@ -16,13 +18,14 @@
 }
 
 .texto-construccion {
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo negro con 50% de opacidad */
-    font-size: 35px;
+    background-color: rgba(0, 0, 0, 0.2); /* Fondo negro con 50% de opacidad */
+    font-size: 25px;
     font-family: "Century", sans-serif;
     color: white;
     text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
     display: block;
     width: 100%; /* Asegura que el div ocupe el 100% del ancho */
+    margin-top: 20px;
     padding-bottom: 20px;
     padding-top: 20px;
 }
@@ -43,7 +46,7 @@
 
 .whatsapp-float {
     position: fixed;
-    top: 60%;
+    bottom: 20px;
     right: 20px;
     width: 60px;
     height: 60px;
@@ -67,7 +70,7 @@
 
 .instagram-float {
     position: fixed;
-    top: 50%;
+    bottom: 70px;
     right: 20px;
     width: 60px;
     height: 60px;
