@@ -1,44 +1,31 @@
 
-.btn-instagram {
-    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #bc1888, #5c2a86); 
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-weight: bold;
-    transition: 0.3s;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-}
 
 .hero-section {
     background: url('Imagenes/fondo.jpg') no-repeat center center; /* Imagen de fondo */
     background-size: cover; /* Ajusta la imagen */
-    height: 100vh; /* Altura de toda la pantalla */
+    width: 100%; /* Ancho completo */
+    height: 100vh; /* Alto completo */
     display: flex;
     align-items: flex-start;
     justify-content: center;
     text-align: center;
 }
 
-.neon-text {
-    color: #0ff;
-    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #00f, 0 0 40px #00f;
-    font-weight: bold;
-}
-
-
 .navbar {
     padding: 3px;
 }
 
-.texto-3d {
+.texto-construccion {
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo negro con 50% de opacidad */
     font-size: 35px;
-    font-weight: bold;
+    font-family: "Century", sans-serif;
     color: white;
-    text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+    display: block;
+    width: 100%; /* Asegura que el div ocupe el 100% del ancho */
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
-
 
 .btn-artz {
     background-color: transparent; /* Mismo color de fondo de la barra */
@@ -56,7 +43,7 @@
 
 .whatsapp-float {
     position: fixed;
-    bottom: 20px;
+    top: 60%;
     right: 20px;
     width: 60px;
     height: 60px;
@@ -80,7 +67,7 @@
 
 .instagram-float {
     position: fixed;
-    bottom: 70px;
+    top: 50%;
     right: 20px;
     width: 60px;
     height: 60px;
