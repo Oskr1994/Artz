@@ -1,33 +1,131 @@
-.navbar {
-    display: none;
+html {
+    scroll-behavior: smooth;
 }
 
-.hero-section {
-    background: url('Imagenes/fondo.jpg') no-repeat center center; /* Imagen de fondo */
-    background-size: cover; /* Ajusta la imagen */
-    width: 100%; /* Ancho completo */
-    height: 100vh; /* Alto completo */
+.d-inline-block {
+    display: inline-block;
+}
+
+#portada {
+    margin-top: 10px;
+    padding-top: 0;
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    text-align: center;
+    justify-content: center; /* Centrar las imágenes */
+    align-items: center;
+    width: 100%;
+    position: relative;
 }
+
+.contenedor-imagenes {
+    display: flex;
+    gap: 20px; /* Espacio entre las imágenes */
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.imagen-izq img {
+    width: 100%;
+    max-width: 700px; /* Tamaño máximo de las imágenes */
+    height: auto;
+}
+
+.imagen-der img {
+    width: 100%;
+    max-width: 400px; /* Tamaño máximo de las imágenes */
+    height: auto;
+}
+.imagen-izq {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.imagen-der {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Botón */
+.btn-custom {
+    background-color: #009FE3;
+    display: inline-block;
+    padding: 10px 20px;
+    white-space: nowrap;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: transparent;
+    color: #009FE3;
+    border: 1px solid #009FE3;
+}
+
+/* Media Query para pantallas más pequeñas */
+@media (max-width: 768px) {
+    #portada {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contenedor-imagenes {
+        flex-direction: column;
+    }
+
+    .imagen-izq,
+    .imagen-der {
+        width: 100%;
+        text-align: center;
+    }
+
+    .imagen-der img {
+        width: 90%;
+    }
+
+    .btn-custom {
+        width: auto;
+    }
+}
+
+
 
 .navbar {
-    padding: 3px;
+    padding: 3p
 }
 
-.texto-construccion {
+.navbar-custom {
+    background-color: #009FE3;
+}
+
+.navbar-nav .nav-item .btn {
+    color: white; /* Texto blanco por defecto */
+    transition: color 0.3s, background-color 0.3s; /* Transición suave */
+}
+
+.navbar-nav .nav-item .btn:hover {
+    color: black; /* Texto negro al pasar el mouse */
+    background-color: white; /* Fondo blanco al pasar el mouse */
+}
+
+.texto-portada {
     background-color: rgba(0, 0, 0, 0.2); /* Fondo negro con 50% de opacidad */
-    font-size: 25px;
-    font-family: "Century", sans-serif;
-    color: white;
-    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
-    display: block;
     width: 100%; /* Asegura que el div ocupe el 100% del ancho */
     margin-top: 20px;
     padding-bottom: 20px;
     padding-top: 20px;
+}
+
+.texto-principio {
+    color: white;
+    text-align: center;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
 }
 
 .btn-artz {
@@ -70,7 +168,7 @@
 
 .instagram-float {
     position: fixed;
-    bottom: 70px;
+    bottom: 90px;
     right: 20px;
     width: 60px;
     height: 60px;
@@ -92,4 +190,44 @@
 .instagram-float:hover {
     transform: scale(1.1);
     filter: brightness(1.2);
+}
+
+.text-servicios {
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 50px;
+}
+
+.btn-ajustado {
+    background-color: #009FE3; /* Color de fondo */
+    display: inline-block; /* Hace que el ancho se ajuste al contenido (el texto) */
+    padding: 10px 20px; /* Espaciado alrededor del texto */
+    white-space: nowrap; /* Impide que el texto se divida en varias líneas */
+    width: min-content; /* Asegura que el botón no tenga un ancho fijo */
+    border-radius: 5px; /* Bordes redondeados */
+    color: white; /* Texto blanco */
+    border: none; /* Sin borde inicialmente */
+    text-align: center;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s, border 0.3s; /* Transición suave */
+}
+
+.btn-ajustado:hover {
+    background-color: transparent; /* Fondo transparente al pasar el mouse */
+    color: #3498db; /* El color del texto cambia al color del borde */
+    border: 1px solid #3498db; /* Mantén el borde visible */
+}
+
+.card-body {
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+.navbar-toggler-icon {
+    filter: invert(100%); /* Cambia de negro a blanco */
+}
+
+.border-dark {
+    border-color: #009FE3 !important;
 }
