@@ -2,13 +2,19 @@ html {
     scroll-behavior: smooth;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: image("img/fondo-p.jpg");
+}
+
 .d-inline-block {
     display: inline-block;
 }
 
 #portada {
-    margin-top: 10px;
-    padding-top: 0;
+    padding: 80px 0;
     display: flex;
     justify-content: center; /* Centrar las imágenes */
     align-items: center;
@@ -48,7 +54,6 @@ html {
     align-items: center;
 }
 
-/* Botón */
 .btn-custom {
     background-color: #009FE3;
     display: inline-block;
@@ -94,8 +99,6 @@ html {
     }
 }
 
-
-
 .navbar {
     padding: 3p
 }
@@ -112,20 +115,6 @@ html {
 .navbar-nav .nav-item .btn:hover {
     color: black; /* Texto negro al pasar el mouse */
     background-color: white; /* Fondo blanco al pasar el mouse */
-}
-
-.texto-portada {
-    background-color: rgba(0, 0, 0, 0.2); /* Fondo negro con 50% de opacidad */
-    width: 100%; /* Asegura que el div ocupe el 100% del ancho */
-    margin-top: 20px;
-    padding-bottom: 20px;
-    padding-top: 20px;
-}
-
-.texto-principio {
-    color: white;
-    text-align: center;
-    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
 }
 
 .btn-artz {
@@ -193,6 +182,8 @@ html {
 }
 
 .text-servicios {
+    font-family: 'Vollkorn', serif;
+    font-weight: bold; /* Hace que el texto sea negrita */
     margin-top: 50px;
     margin-left: 20px;
     margin-right: 20px;
@@ -208,9 +199,9 @@ html {
     border-radius: 5px; /* Bordes redondeados */
     color: white; /* Texto blanco */
     border: none; /* Sin borde inicialmente */
-    text-align: center;
     font-size: 16px;
     transition: background-color 0.3s, color 0.3s, border 0.3s; /* Transición suave */
+    margin-left: 2rem;
 }
 
 .btn-ajustado:hover {
@@ -219,10 +210,7 @@ html {
     border: 1px solid #3498db; /* Mantén el borde visible */
 }
 
-.card-body {
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-}
+
 
 .navbar-toggler-icon {
     filter: invert(100%); /* Cambia de negro a blanco */
@@ -230,4 +218,71 @@ html {
 
 .border-dark {
     border-color: #009FE3 !important;
+}
+
+.card-header {
+    font-family: 'Arial', serif;
+    font-weight: bold; /* Hace que el texto sea negrita */
+    border-bottom: 2px solid #009FE3; /* Define el grosor y color de la línea */
+    width: 80%; /* Ajusta el ancho de la línea (puedes cambiar el porcentaje) */
+    margin: 0 auto; /* Centra la línea horizontalmente */
+    text-align: left; /* Asegura que el texto siga alineado a la izquierda */
+    padding-bottom: 10px; /* Espacio entre la línea y el contenido */
+    background-color: rgba(255, 255, 255, 0) !important;
+}
+.card {
+    border: 3px solid #009FE3; /* Grosor y color del borde */
+    background-color: rgba(255, 255, 255, 0) !important;
+}
+.card-body {
+    font-family: "Arial", sans-serif;
+    justify-content: left; /* Centra horizontalmente */
+    background-color: rgba(255, 255, 255, 0) !important;
+}
+
+.servicios {
+    position: relative;
+    background-image: url("Imagenes/fondo-p.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 10px 0;
+    color: white;
+}
+
+.servicios::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(255, 255, 255, 0.4); /* Fondo negro con 50% de transparencia */
+    z-index: 1;
+}
+
+.servicios .container {
+    position: relative;
+    z-index: 2;
+}
+
+.btn-enviar {
+    background-color: #009FE3; /* Color de fondo */
+    display: inline-block; /* Hace que el ancho se ajuste al contenido (el texto) */
+    padding: 10px 20px; /* Espaciado alrededor del texto */
+    white-space: nowrap; /* Impide que el texto se divida en varias líneas */
+    width: min-content; /* Asegura que el botón no tenga un ancho fijo */
+    border-radius: 5px; /* Bordes redondeados */
+    color: white; /* Texto blanco */
+    border: none; /* Sin borde inicialmente */
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s, border 0.3s; /* Transición suave */
+    margin-left: 2rem;
+}
+
+.btn-enviar:hover {
+    background-color: transparent; /* Fondo transparente al pasar el mouse */
+    color: #3498db; /* El color del texto cambia al color del borde */
+    border: 1px solid #3498db; /* Mantén el borde visible */
 }

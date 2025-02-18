@@ -13,11 +13,12 @@
 
     <!-- Conectar el CSS -->
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <!-- Barra superior con menú -->
-<nav class="navbar navbar-expand-lg navbar-light navbar-light border-bottom navbar-custom">
+<nav class="navbar navbar-expand-lg navbar-light border-bottom navbar-custom fixed-top">
     <div class="container-fluid">
         
         <!-- btn ARTZ -->
@@ -37,13 +38,12 @@
                 <li class="nav-item"><a class="btn btn-outline-dark ms-2 border-0" href="#servicios">Servicios</a></li>
                 <li class="nav-item"><a class="btn btn-outline-dark ms-2 border-0" href="#">Portafolio</a></li>
                 <li class="nav-item"><a class="btn btn-outline-dark ms-2 border-0" href="#">Nosotros</a></li>
-                <li class="nav-item"><a class="btn btn-outline-dark ms-2 border-0" href="#">Contacto</a></li>
+                <li class="nav-item"><a class="btn btn-outline-dark ms-2 border-0" href="#contacto">Contacto</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<!-- Titulo -->
 <section id="portada">
     <div class="contenedor-imagenes">
         <div class="imagen-izq">
@@ -57,9 +57,7 @@
     </div>
 </section>
 
-<hr> <!-- Línea divisoria -->
-
-<section>
+<section class="botones-sociales">
     <div> 
         <a href="https://wa.me/51969792034?text=Hola,%20quiero%20mas%20informacion%20sobre%20Artz." class="whatsapp-float" target="_blank">
             <img src="Imagenes/whatsapp.png" alt="WhatsApp">
@@ -73,31 +71,32 @@
 <section id="servicios" class="servicios">
     <div class="container">
         <!-- Texto introductorio centrado -->
-        <div class="text-servicios text-center mb-4">
-            <h1 class="fw-bold">Servicios</h1>
-            <p>
-                Potencia tu marca con un diseño profesional. 
-                Ofrecemos servicios de diseño gráfico digital e impreso, creación
-                de logotipos, desarrollo de manual de marca y brandboard. ¡Dale 
-                identidad y presencia a tu negocio con un diseño único y estratégico!
-            </p>
+        <div class="text-servicios text-start mb-4 text-black">
+            <h1 class="fw-bold">
+                __<br>
+                ¿QUE SERVICIO<br>
+                NECESITAS?</h1>
+            <h2>
+                Te podemos ayudar con...
+            </h2>
         </div>
 
         <!-- Fila de tarjetas con texto centrado -->
-        <div class="row justify-content-center">
+        <div class="row justify-content-left">
             <!-- Tarjeta 1: Diseño gráfico -->
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                 <div class="card border-dark shadow-sm h-100 d-flex flex-column">
-                    <div class="card-header bg-white text-black text-center">
-                        <h2>Diseño gráfico</h2>
+                    <div class="card-header bg-white text-black text-start">
+                        <h2>Diseño<br>Digital</h2>
                     </div>
-                    <div class="card-body d-flex flex-column text-center flex-grow-1">
-                        <p class="card-text flex-grow-1">
-                            Creación de piezas visuales para medios 
-                            digitales y físicos, como redes sociales, 
-                            publicidad, tarjetas, flyers y más.
-                        </p>
-                        <a href="#" class="btn btn-dark btn-ajustado mt-auto">Reservar ahora</a>
+                    <div class="card-body d-flex flex-column text-start flex-grow-1">
+                        <ul class="ps-5">  <!-- Agrega padding para la indentación -->
+                            <li>Logotipo.</li>
+                            <li>Manual de marca.</li>
+                            <li>Brandboard.</li>
+                            <li>Diseño para redes sociales y banners.</li>
+                        </ul>
+                        <a href="#" class="btn btn-dark btn-ajustado mt-auto">Consultanos</a>
                     </div>
                 </div>
             </div>
@@ -105,49 +104,19 @@
             <!-- Tarjeta 2: Logotipo -->
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                 <div class="card border-dark shadow-sm h-100 d-flex flex-column">
-                    <div class="card-header bg-white text-black text-center">
-                        <h2>Logotipo</h2>
+                    <div class="card-header bg-white text-black text-start">
+                        <h2>Diseños<br>Impresos</h2>
                     </div>
-                    <div class="card-body d-flex flex-column text-center flex-grow-1">
-                        <p class="card-text flex-grow-1">
-                            Diseño de una identidad visual única y 
-                            representativa para tu marca.
-                        </p>
-                        <a href="#" class="btn btn-dark btn-ajustado mt-auto">Reservar ahora</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tarjeta 3: Manual de marca -->
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div class="card border-dark shadow-sm h-100 d-flex flex-column">
-                    <div class="card-header bg-white text-black text-center">
-                        <h2>Manual de marca</h2>
-                    </div>
-                    <div class="card-body d-flex flex-column text-center flex-grow-1">
-                        <p class="card-text flex-grow-1">
-                            Guía detallada con el uso correcto del logotipo, 
-                            colores, tipografías y aplicaciones para mantener 
-                            coherencia en la identidad visual.
-                        </p>
-                        <a href="#" class="btn btn-dark btn-ajustado mt-auto">Reservar ahora</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tarjeta 4: Brandboard -->
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                <div class="card border-dark shadow-sm h-100 d-flex flex-column">
-                    <div class="card-header bg-white text-black text-center">
-                        <h2>Brandboard</h2>
-                    </div>
-                    <div class="card-body d-flex flex-column text-center flex-grow-1">
-                        <p class="card-text flex-grow-1">
-                            Resumen visual con los elementos clave de la 
-                            identidad de marca, incluyendo paleta de colores,
-                            tipografía, estilo gráfico y logotipo.
-                        </p>
-                        <a href="#" class="btn btn-dark btn-ajustado mt-auto">Reservar ahora</a>
+                    <div class="card-body d-flex flex-column text-start flex-grow-1">
+                        <!-- Lista correctamente estructurada -->
+                        <ul class="ps-5 flex-grow-1">
+                            <li>Bolantes.</li>
+                            <li>Revistas.</li>
+                            <li>Brochures.</li>
+                            <li>Papeleria y más...</li>
+                        </ul>
+                        <!-- Botón alineado abajo -->
+                        <a href="#" class="btn btn-dark btn-ajustado mt-auto">Consultanos</a>
                     </div>
                 </div>
             </div>
@@ -155,16 +124,17 @@
             <!-- Tarjeta 5: Creación de sitio web -->
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                 <div class="card border-dark shadow-sm h-100 d-flex flex-column">
-                    <div class="card-header bg-white text-black text-center">
-                        <h2>Creación de sitio web</h2>
+                    <div class="card-header bg-white text-black text-start">
+                        <h2>Desarrollo<br>Web</h2>
                     </div>
-                    <div class="card-body d-flex flex-column text-center flex-grow-1">
-                        <p class="card-text flex-grow-1">
-                            Desarrollo de páginas web personalizadas y optimizadas, 
-                            con diseño moderno y funcional, adaptadas a las necesidades 
-                            de tu negocio para mejorar tu presencia online.
-                        </p>
-                        <a href="#" class="btn btn-dark btn-ajustado mt-auto">Reservar ahora</a>
+                    <div class="card-body d-flex flex-column text-start flex-grow-1">
+                            <ul class="ps-5">  <!-- Agrega padding para la indentación -->
+                                <li>Páginas Web Personales.</li>
+                                <li>Tienda online.</li>
+                                <li>Sitios Web Corporativos.</li>
+                                <li>Portafolios Online.</li>
+                            </ul>
+                        <a href="#" class="btn btn-dark btn-ajustado mt-auto">Consultanos</a>
                     </div>
                 </div>
             </div>
@@ -172,6 +142,50 @@
     </div>
 </section>
 
+<section id="contacto">
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Columna Izquierda: Texto Informativo -->
+            <div class="col-md-6 d-flex align-items-center">
+                <div>
+                    <h2 class="fw-bold">¡Estamos aquí para ayudarte!</h2>
+                    <p>
+                        Si tienes preguntas o necesitas ayuda con nuestros servicios, no dudes en contactarnos. 
+                        Estamos disponibles para atenderte y brindarte la mejor atención.
+                    </p>
+                    <p><strong>Email:</strong> contacto@empresa.com</p>
+                    <p><strong>Teléfono:</strong> +51 999 999 999</p>
+                </div>
+            </div>
+
+            <!-- Columna Derecha: Formulario de Contacto -->
+            <div class="col-md-6">
+                <div class="card shadow-lg p-4 border-0">
+                    <h2 class="text-center fw-bold mb-4">Contáctanos</h2>
+                    
+                    <form>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Tu nombre" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="email" placeholder="tu@email.com" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="mensaje" class="form-label">Mensaje</label>
+                            <textarea class="form-control" id="mensaje" rows="4" placeholder="Escribe tu mensaje..." required></textarea>
+                            <a href="#" class="btn btn-dark btn-enviar mt-auto">Enviar Mensaje</a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <hr> <!-- Línea divisoria -->
     <!-- Bootstrap 5 JS -->
