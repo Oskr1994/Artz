@@ -5,8 +5,21 @@ html {
 body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    width: 100vw;  /* Asegura que ocupe todo el ancho */
+    height: 100vh; /* Opcional: para que cubra toda la pantalla inicial */
+    background-image: url("Imagenes/Fondo-estatico.jpg");
+    background-size: 100% auto; /* Ajusta el ancho al 100% y la altura automática */
+    background-position: top center; /* Asegura que siempre esté en la parte superior */
+    background-repeat: no-repeat;
+    background-attachment: scroll; /* Permite que el fondo se mueva con el scroll */
 }
+
+
+#portada, #portafolio, #contacto {
+    position: relative;
+    z-index: 2;
+}
+
 
 .d-inline-block {
     display: inline-block;
@@ -99,7 +112,7 @@ body {
 }
 
 .navbar {
-    padding: 3p
+    padding: 3px;
 }
 
 .navbar-custom {
@@ -235,17 +248,14 @@ body {
     justify-content: left; /* Centra horizontalmente */
     background-color: rgba(255, 255, 255, 0) !important;
 }
-.text-servicios {
+h1.mb-4.mt-0 {
     font-family: "Mona Sans", sans-serif;
+    color: white;
 }
+
 .servicios {
     position: relative;
-    background-image: url("Imagenes/fondo-p.jpg");
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 10px 0;
+    z-index: 2; /* Mayor que el fondo pero menor que otros elementos interactivos */
 }
 
 .servicios:before {
@@ -257,7 +267,8 @@ body {
     height: 100%;
     background: hsla(198, 100%, 45%, 0.5);
     z-index: 1;
-}
+    pointer-events: none; /* Evita que bloquee clics */
+} 
 
 .servicios .container {
     position: relative;
@@ -286,4 +297,78 @@ body {
 
 #contacto {
     background-color: #009FE3;
+}
+
+/* Oculta los elementos con la clase 'hidden' */
+.hidden {
+    display: none;
+}
+
+/* Contenedor del portafolio */
+#portafolio {
+    background-color: white;
+    display: flex;
+    flex-direction: column; /* Para que el botón quede debajo */
+    align-items: center; /* Centra los elementos */
+
+}
+.portafolio {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+/* Contenedor de los elementos */
+.portafolio-container {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 800px; /* Ajusta el ancho si es necesario */
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/* Cada trabajo */
+.portafolio-item {
+    flex: 1 1 calc(50% - 20px); /* Muestra 2 elementos por fila en pantallas grandes */
+    border: 1px solid #ccc;
+    padding: 15px;
+    text-align: center;
+    background: #f9f9f9;
+    transition: 0.3s ease-in-out;
+}
+
+/* Estilos para el botón */
+#show-more {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+#show-more:hover {
+    background: #0056b3;
+}
+
+.servicios {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.nosotros {
+    background-color: white;
+    padding-top: 40px; /* Margen superior con fondo blanco */
+}
+.linea-gruesa {
+    border-top: 4px solid black;
+    width: 3cm; /* Ajusta el ancho según sea necesario */
+    margin-top: 20px;
+}
+.alineado-izquierda {
+    text-align: left;
 }

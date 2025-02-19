@@ -17,67 +17,70 @@
 </head>
 <body>
 
-    <!-- Barra superior con menú -->
-<nav class="navbar navbar-expand-lg navbar-light border-bottom navbar-custom fixed-top">
-    <div class="container-fluid">
-        
-        <!-- btn ARTZ -->
-        <a class="navbar-brand ms-4" href="#">
-            <img src="Imagenes/logo.png" alt="Logo" width="70.0" class="d-inline-block align-text-top">
-        </a>
+<header><nav class="navbar navbar-expand-lg navbar-light border-bottom navbar-custom fixed-top">
+        <div class="container-fluid">
+            
+            <!-- btn ARTZ -->
+            <a class="navbar-brand ms-4" href="#">
+                <img src="Imagenes/logo.png" alt="Logo" width="70.0" class="d-inline-block align-text-top">
+            </a>
 
-        <!-- Botón de menú responsive -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span> <!-- Icono de menú -->
-        </button>
+            <!-- Botón de menú responsive -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span> <!-- Icono de menú -->
+            </button>
 
-        <!-- Menú -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto text-end">
-                <li class="nav-item"><a class="btn btn-outline-dark ms-2 border-0" href="#portada">Inicio</a></li>
-                <li class="nav-item"><a class="btn btn-outline-dark ms-2 border-0" href="#servicios">Servicios</a></li>
-                <li class="nav-item"><a class="btn btn-outline-dark ms-2 border-0" href="#">Portafolio</a></li>
-                <li class="nav-item"><a class="btn btn-outline-dark ms-2 border-0" href="#">Nosotros</a></li>
-                <li class="nav-item"><a class="btn btn-outline-dark ms-2 border-0" href="#contacto">Contacto</a></li>
-            </ul>
+            <!-- Menú -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto text-end">
+                    <li class="nav-item"><a class="btn btn-outline-dark ms-2 border-0" href="#portada">Inicio</a></li>
+                    <li class="nav-item"><a class="btn btn-outline-dark ms-2 border-0" href="#servicios">Servicios</a></li>
+                    <li class="nav-item"><a class="btn btn-outline-dark ms-2 border-0" href="#portafolio">Portafolio</a></li>
+                    <li class="nav-item"><a class="btn btn-outline-dark ms-2 border-0" href="#nosotros">Nosotros</a></li>
+                    <li class="nav-item"><a class="btn btn-outline-dark ms-2 border-0" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</header>
 
 <section id="portada">
     <div class="contenedor-imagenes">
         <div class="imagen-izq">
-            <img src="Imagenes/web-site.png" alt="web-site">
-            <a href="#" class="btn btn-custom">Contactanos</a>
-        </div>
-        <div class="imagen-der">
-            <img src="Imagenes/construc.png" alt="construc">
-            
+            <h1 class="text-titulo mt-5 text-center display-3 lh-1" style="color: #009FE3; font-family: monospace; font-weight: bold;">TRANSFORMAMOS IDEAS<br>EN DISEÑOS FUNCIONALES</h1>
+            <h1 class="text-subtitulo fs-3 text-center mb-4 lh-1" style="color: black;">ELEVA TU MARCA CON CREATIVIDAD<BR>QUE IMPACTA Y EMOCIONA</h1>
+            <a href="#" class="btn-portada btn-dark btn-enviar mt-0 rounded-4 text-center text-decoration-none lh-1">¡HAS QUE TU IMAGEN<br>HABLE POR TI!</a>
         </div>
     </div>
 </section>
 
-<section class="botones-sociales">
-    <div> 
-        <a href="https://wa.me/51969792034?text=Hola,%20quiero%20mas%20informacion%20sobre%20Artz." class="whatsapp-float" target="_blank">
-            <img src="Imagenes/whatsapp.png" alt="WhatsApp">
-        </a>
-        <a href="https://www.instagram.com/artzdisenografico?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="instagram-float" target="_blank">
-            <img src="Imagenes/logotipo-de-instagram.png" alt="instagram">
-        </a>
+<section id="nosotros" class="nosotros pb-5">
+    <div class="container">
+        <div class="linea-gruesa"></div>
+        <div class="row">
+            <div class="col-md-6 alineado-izquierda">
+                <h1>TRABAJAMOS<br> PARA TI<br></h1>
+                <p>
+                    <br>bla<br>bla<br>bla<br>bla<br>
+                    bla<br>bla<br>bla<br>bla<br>
+                </p>
+            </div>
+            <div class="col-md-6 imagen-nosotros">
+                <img src="Imagenes/construc.png" alt="Imagen Nosotros" class="img-fluid">
+            </div>
+        </div>
     </div>
 </section>
+
+
 
 <section id="servicios" class="servicios">
     <div class="container">
-        <!-- Texto introductorio centrado -->
-        <div class="text-servicios text-start mb-4">
-            <h1 style="color: white;" class="fw-bold">
-                ___<br>
-                ¿NECESITAS<br>
-                DISEÑO GRAFICO<br>
-                DIGITAL E IMPRESO?</h1>
-        </div>
+        <h1 class="mb-4 mt-0">
+            ___<br>
+            ¿NECESITAS<br>
+            DISEÑO GRAFICO<br>
+            DIGITAL E IMPRESO?</h1>
 
         <!-- Fila de tarjetas con texto centrado -->
         <div class="row justify-content-left">
@@ -140,6 +143,29 @@
     </div>
 </section>
 
+<section id="portafolio" class="portafolio">
+
+    <div class="linea-gruesa"></div>
+    <div><h1>NUESTRO<br>TRABAJO</h1></div>
+        <!-- Elementos visibles al inicio -->
+        <div class="portafolio-container">
+        <div class="portafolio-item">Trabajo 1</div>
+        <div class="portafolio-item">Trabajo 2</div>
+        <div class="portafolio-item">Trabajo 3</div>
+        <div class="portafolio-item">Trabajo 4</div>
+        
+        <!-- Elementos ocultos inicialmente -->
+        <div class="portafolio-item hidden">Trabajo 5</div>
+        <div class="portafolio-item hidden">Trabajo 6</div>
+        <div class="portafolio-item hidden">Trabajo 7</div>
+        <div class="portafolio-item hidden">Trabajo 8</div>
+        
+    </div>
+    
+    <!-- Botón para mostrar más trabajos -->
+    <button id="show-more">Ver más</button>
+</section>
+
 <section id="contacto">
     <div class="container">
         <div class="row">
@@ -184,9 +210,40 @@
     </div>
 </section>
 
+<section class="botones-sociales">
+    <div> 
+        <a href="https://wa.me/51969792034?text=Hola,%20quiero%20mas%20informacion%20sobre%20Artz." class="whatsapp-float" target="_blank">
+            <img src="Imagenes/whatsapp.png" alt="WhatsApp">
+        </a>
+        <a href="https://www.instagram.com/artzdisenografico?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="instagram-float" target="_blank">
+            <img src="Imagenes/logotipo-de-instagram.png" alt="instagram">
+        </a>
+    </div>
+</section>
+
+<script>
+    document.getElementById('show-more').addEventListener('click', function() {
+      // Selecciona solo los primeros 4 elementos ocultos
+      const hiddenItems = document.querySelectorAll('.portafolio-item.hidden');
+      const itemsToShow = Array.from(hiddenItems).slice(0, 4); // Muestra 4 elementos por cada clic
+      
+      itemsToShow.forEach(item => {
+        item.classList.remove('hidden');
+      });
+      
+      // Si ya no quedan elementos ocultos, oculta el botón
+      if (document.querySelectorAll('.portafolio-item.hidden').length === 0) {
+        this.style.display = 'none';
+      }
+    });
+  </script>
+  
     <!-- Bootstrap 5 JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
 
