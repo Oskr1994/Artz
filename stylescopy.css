@@ -3,11 +3,7 @@ html {
 }
 
 body {
-    background-image: url("Imagenes/Fondo-estatico.jpg");
-    background-size: cover; /* Ajusta el fondo al tamaño de la pantalla */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que se repita */
-    background-attachment: fixed; /* Hace que el fondo sea estático */
+    background-color: white;
 }
 
 #portada {
