@@ -10,7 +10,7 @@ body {
     background-attachment: fixed; /* Hace que el fondo sea estático */
 }
 
-#/* Sección Portada */
+/* Sección Portada */
 #portada {
     display: flex;
     justify-content: center;
@@ -227,12 +227,9 @@ body {
     border: 1px solid #3498db; /* Mantén el borde visible */
 }
 
-
-
 .navbar-toggler-icon {
     filter: invert(100%); /* Cambia de negro a blanco */
 }
-
 
 .card-header {
     font-family: "Mona Sans", sans-serif;
@@ -244,23 +241,29 @@ body {
     padding-bottom: 10px; /* Espacio entre la línea y el contenido */
     background-color: rgba(255, 255, 255, 0) !important;
 }
+
 .card {
     border: 3px solid hsl(0, 0%, 100%); /* Grosor y color del borde */
     background-color: rgba(255, 255, 255, 0) !important;
 }
+
 .card-body {
     font-family: "Arial", sans-serif;
     justify-content: left; /* Centra horizontalmente */
     background-color: rgba(255, 255, 255, 0) !important;
 }
+
 h1.mb-4.mt-0 {
     font-family: "Mona Sans", sans-serif;
     color: white;
 }
 
+/* Servicios */
 .servicios {
     position: relative;
     z-index: 2; /* Mayor que el fondo pero menor que otros elementos interactivos */
+    margin-top: 0;
+    padding-top: 0;
 }
 
 .servicios:before {
@@ -314,12 +317,13 @@ h1.mb-4.mt-0 {
     display: flex;
     flex-direction: column; /* Para que el botón quede debajo */
     align-items: center; /* Centra los elementos */
-
 }
+
 .portafolio {
     padding-top: 100px;
     padding-bottom: 100px;
 }
+
 /* Contenedor de los elementos */
 .portafolio-container {
     margin-top: 20px;
@@ -359,20 +363,17 @@ h1.mb-4.mt-0 {
     background: #0056b3;
 }
 
-.servicios {
-    margin-top: 0;
-    padding-top: 0;
-}
-
 .nosotros {
     background-color: white;
     padding-top: 40px; /* Margen superior con fondo blanco */
 }
+
 .linea-gruesa {
     border-top: 4px solid black;
     width: 3cm; /* Ajusta el ancho según sea necesario */
     margin-top: 20px;
 }
+
 .alineado-izquierda {
     text-align: left;
 }
