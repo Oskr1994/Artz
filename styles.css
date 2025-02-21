@@ -10,6 +10,7 @@ body {
     background-attachment: fixed; /* Hace que el fondo sea estático */
 }
 
+#/* Sección Portada */
 #portada {
     display: flex;
     justify-content: center;
@@ -18,76 +19,55 @@ body {
     height: 100vh;
 }
 
-/* Asegurarse de que los elementos estén apilados */
+/* Contenedor de la Portada */
 .contenedor-portada {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Estilos para el título */
+/* Estilos para el Título */
 .text-titulo {
     color: #009FE3;
     font-family: monospace;
     font-weight: bold;
-    font-size: 3em; /* Puedes ajustar el tamaño según tu necesidad */
+    font-size: clamp(1.5rem, 5vw, 3rem);
     line-height: 1.2em;
-
 }
 
-/* Estilos para el subtítulo */
+/* Estilos para el Subtítulo */
 .text-subtitulo {
     color: black;
     font-family: monospace;
     font-weight: bold;
-    font-size: 1.5em; /* Puedes ajustar el tamaño según tu necesidad */
+    font-size: clamp(1rem, 4vw, 2rem);
     line-height: 1.2em;
-
 }
 
-/* Estilos para el botón */
+/* Estilos para el Botón */
 .btn-portada {
-    font-size: 1.2em; /* Puedes ajustar el tamaño según tu necesidad */
-}
-
-.btn-portada {
-    background-color: #009fe3; /* Color de fondo */
-    display: inline-block; /* Hace que el ancho se ajuste al contenido (el texto) */
-    padding: 10px 10px; /* Espaciado alrededor del texto */
-    white-space: nowrap; /* Impide que el texto se divida en varias líneas */
-    width: min-content; /* Asegura que el botón no tenga un ancho fijo */
-    border-radius: 5px; /* Bordes redondeados */
-    color: #ffffff; /* Texto blanco */
-    border: none; /* Sin borde inicialmente */
+    background-color: #009FE3;
+    display: inline-block;
+    padding: 10px;
+    white-space: nowrap;
+    width: min-content;
+    border-radius: 5px;
+    color: #ffffff;
+    border: none;
     font-size: 16px;
-    transition: background-color 0.3s, color 0.3s, border 0.3s; /* Transición suave */
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
 }
 
 .btn-portada:hover {
-    background-color: white; /* Fondo transparente al pasar el mouse */
-    color: #009fe3; /* El color del texto cambia al color del borde */
-    border: 1px solid #009fe3; /* Mantén el borde visible */
+    background-color: white;
+    color: #009FE3;
+    border: 1px solid #009FE3;
 }
 
 /* Ajustes para pantallas pequeñas */
 @media (max-width: 600px) {
-    .text-titulo {
-        font-size: 2em; /* Ajuste de tamaño para pantallas pequeñas */
-    }
-
-    .text-subtitulo {
-        font-size: 1.2em; /* Ajuste de tamaño para pantallas pequeñas */
-    }
-
     .btn-portada {
-        font-size: 1em; /* Ajuste de tamaño para pantallas pequeñas */
-    }
-
-    /* Asegurarse de que ambos textos se mantengan en dos líneas */
-    .text-titulo, .text-subtitulo {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        font-size: 1em;
     }
 }
 
