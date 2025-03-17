@@ -1,0 +1,309 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    scroll-behavior: smooth; /* Hace que el desplazamiento sea suave */
+}
+
+body {
+    overflow-x: hidden; /* Evita el desplazamiento horizontal */
+    background-image: url("imagenes/Fondo-estatico.jpg"); /* Establece la imagen de fondo */
+    background-size: cover; /* Ajusta el fondo al tamaño de la pantalla */
+    background-position: top center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que se repita */
+    background-attachment: fixed; /* Hace que el fondo sea estático */
+}
+.logo {
+    margin-left: 5px;
+}
+.nav-btn {
+    display: flex;
+    list-style: none;
+    padding-right: 5px;
+}
+.navbar {
+    position: fixed; /* Fija el elemento en la ventana del navegador */
+    width: 100%;
+    background-color: #009FE3;
+    display: flex;
+    justify-content: space-between; /* Distribuye los elementos con espacio igual entre ellos */
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.nav-btn a {
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.nav-btn a:hover {
+    background-color: white;
+    color: #009FE3;
+    border-radius: 10px;
+}
+
+.inicio {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+}
+
+.btn-inicio {
+    background-color: #009FE3;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: medium;
+    border-radius: 20px;
+    border: 2px solid #009FE3;
+}
+.btn-inicio:hover {
+    background-color: white;
+    color: #009FE3;
+    border-color: #009FE3;
+}
+.titulo {
+    width: 60%;
+    display: flex;
+}
+.nosotros {
+    display: flex;
+    background-color: white;
+}
+
+.textos-nosotros {
+    width: 50%;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+}
+.parrafo-nosotros {
+    text-align: justify;
+    line-height: 1.6;
+}
+.imagen-nosotros {
+    width: 50%;
+    display: block;
+    align-items: center;
+    justify-content: center;
+}
+
+.servicios {
+    background-color: rgba(0, 159, 227, 0.5);
+    padding-block: 100px;
+}
+.diseño-digital {
+    width: 100%;
+    border-radius: 10px;
+}
+.titulo-servicios {
+    padding-left: 50px;
+    color: white;
+}
+
+.bloques-servicios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 100vw;
+}
+
+.bloque1, .bloque2, .bloque3 {
+    width: 300px;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.titulo1, .titulo2, .titulo3 {
+    padding-left: 15px;
+}
+
+hr {
+    border: none;
+    height: 2px;
+    background-color: white;
+    width: 90%;
+}
+.contacto {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    padding-block: 150px;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+.info-contacto {
+    text-align: left;
+    flex: 1;
+}
+.formulario {
+    border: 2px solid #007bb3;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    text-align: left;
+    flex: 1;
+    padding: 10px;
+}
+
+.formulario form {
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario input, .contacto textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+}
+
+.btn-enviar {
+    display: flex;
+    justify-content: center;
+}
+
+.formulario button {
+    margin-top: 10px;
+    padding: 10px 10px;
+    background-color: #009fe3;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+.formulario button:hover {
+    background-color: white;
+    color: #009FE3;
+    border: 2px solid #009FE3;
+}
+.whatsapp-icon, .instagram-icon {
+    width: 24px; /* Ancho del icono */
+    height: 24px; /* Altura del icono */
+}
+.menu-plegable {
+        display: none;
+}
+.boton-plegable {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+    }
+    #menu-boton:checked ~ .nav-btn {
+        display: flex;
+    }
+    .boton-plegable {
+        display: block;
+        padding-right: 15px;
+    }
+    .nav-btn li {
+        text-align: center;
+        padding: 15px;
+    }
+    .nav-btn {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 20px;
+        right: 0;
+        width: 10%;
+        background: rgb(0, 159, 227, 0.7);
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+    }
+    .inicio {
+        height: 100vh;
+        width: 100%;
+        margin: 0;
+    }
+    .titulo {
+        width: 95%;
+        display: flex;
+    }
+    .btn-inicio {
+        font-size: small;
+    }
+    .nosotros {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+    }
+    .textos-nosotros {
+        width: 90%;
+    }
+    .parrafo-nosotros {
+        width: 90%;
+    }
+    .imagen-nosotros {
+        width: 90%;
+    }
+    .imagen-nosotros img {
+        width: 100%;
+    }
+
+    .servicios {
+        padding-block: 50px;
+    }
+
+    .titulo-servicios {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .bloques-servicios {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .bloque1, .bloque2, .bloque3 {
+        width: 85%;
+        margin: 10px 10px;
+    }
+
+    .contacto {
+        flex-direction: column;
+        padding-block: 50px;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .info-contacto {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .formulario {
+        padding: 20px;
+    }
+}
+
