@@ -15,7 +15,7 @@ body {
 
 .navbar {
     position: fixed; /* Fija el elemento en la ventana del navegador */
-    width: 100vw;
+    width: 100%;
     margin: 0;
     padding: 0;
     background-color: #009FE3;
@@ -109,27 +109,31 @@ body {
 }
 
 .servicios {
-    background-color: rgba(0, 159, 227, 0.5);
-    padding-block: 100px;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-bottom: 50px;
 }
-.diseño-digital {
+.diseño-digital, .diseño-impreso, .diseño-ux {
     width: 100%;
     border-radius: 10px;
 }
 .titulo-servicios {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
     padding-left: 50px;
     color: white;
 }
-
 .bloques-servicios {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
-    width: 100vw;
+    margin-top: 10px;
 }
 
 .bloque1, .bloque2, .bloque3 {
+    background-color: rgba(0, 0, 0, 0.3);
     width: 300px;
     border: 2px solid white;
     border-radius: 10px;
@@ -150,21 +154,49 @@ hr {
     width: 90%;
 }
 .contacto {
-    background-color: white;
     display: flex;
+    align-items: center;
     justify-content: center;
-    padding-block: 150px;
-    padding-right: 50px;
-    padding-left: 50px;
+    width: 100vw;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.contacto-box{
+
+    display: flex;
+    margin: 10%;
+    width: 80%;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 .info-contacto {
+    background-color: white;
+    padding: 25px;
     text-align: left;
     flex: 1;
 }
+.info-contacto p {
+    color: rgba(0, 0, 0, 0.6);
+    text-decoration: none;
+    margin: 0;
+}
+.border-top {
+    display: block;
+    width: 50px;
+    height: 4px;
+    background-color: black;
+    margin-left: 0 auto;
+    margin-bottom: 15px;
+}
+.border-top-white {
+    display: block;
+    width: 50px;
+    height: 4px;
+    background-color: white;
+    margin-left: 0 auto;
+    margin-bottom: 15px;
+}
 .formulario {
-    border: 2px solid #007bb3;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    background-color: #009fe3;
     text-align: left;
     flex: 1;
     padding: 10px;
@@ -187,23 +219,29 @@ hr {
 }
 
 .formulario button {
+    width: 50%;
     margin-top: 10px;
     padding: 10px 10px;
-    background-color: #009fe3;
-    color: white;
+    background-color: white;
+    color: #009FE3;
     border-radius: 5px;
     cursor: pointer;
-    border: none;
+    border: 2px solid white;
 }
 
 .formulario button:hover {
-    background-color: white;
-    color: #009FE3;
-    border: 2px solid #009FE3;
+    background-color: #009FE3;
+    color: white;
+    border: 2px solid white;
 }
-.whatsapp-icon, .instagram-icon {
-    width: 24px; /* Ancho del icono */
-    height: 24px; /* Altura del icono */
+.redes-sociales {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.iconos-redes {
+    width: 30px; /* Ancho del icono */
+    height: 30px; /* Altura del icono */
 }
 .menu-plegable {
     display: none;
@@ -213,6 +251,38 @@ hr {
     display: none;
     margin: 0;
 }
+.footer {
+    display: flex;
+    justify-content: center;
+    background-color: #009FE3;
+    color: white;
+    padding-left: 40px;
+    padding-bottom: 40px;
+    padding-top: 10px;
+    gap: 50px;
+}
+.lista-footer {
+    display: block;
+    gap: 0;
+}
+.lista-footer h2 {
+    margin-bottom: 0;
+}
+
+.linea-footer {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    margin-left: 0 auto;
+    margin-top: 2px;
+    margin-bottom: 10px;
+}
+.iconos-footer {
+    padding-left: 10px;
+    width: 30px;
+    height: 30px;
+}
 
 /* Responsive styles */
 @media (max-width: 768px) {
@@ -220,14 +290,13 @@ hr {
     html, body {
         margin: 0;
         padding: 0;
-        width: 100%;
-        height: 100vh; /* Asegura que la página ocupe al menos el alto de la pantalla */
+        width: 100vw;
         overflow-x: hidden;
         box-sizing: border-box;
     }
     .navbar {
         display: flex;
-        width: 100vw;
+        width: 100%;
         margin: 0 auto; 
         box-sizing: border-box;
     }
@@ -289,14 +358,11 @@ hr {
     .imagen-nosotros img {
         width: 100%;
     }
-
     .servicios {
         padding-block: 50px;
     }
-
     .titulo-servicios {
-        padding-left: 0;
-        text-align: center;
+        padding-left: 30px;
     }
 
     .bloques-servicios {
@@ -310,20 +376,15 @@ hr {
         margin: 10px 10px;
     }
 
-    .contacto {
+    .contacto-box {
         flex-direction: column;
-        padding-block: 50px;
-        padding-right: 20px;
-        padding-left: 20px;
     }
 
     .info-contacto {
-        text-align: center;
-        margin-bottom: 20px;
+        text-align: left;
     }
-
     .formulario {
         padding: 20px;
+        padding-bottom: 30px;
     }
 }
-
