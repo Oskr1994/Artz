@@ -391,4 +391,7 @@ hr {
     .footer {
         flex-direction: column;
     }
+    .linea-footer {
+        width: 35%;
+    }
 }
