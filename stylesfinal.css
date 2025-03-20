@@ -388,4 +388,6 @@ hr {
         padding: 20px;
         padding-bottom: 30px;
     }
+    .footer {
+        flex-direction: column;
 }
