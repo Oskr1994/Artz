@@ -18,9 +18,9 @@
         </label>
         <ul class="nav-btn">
             <li><a href="inicio.html">Inicio</a></li>
-            <li><a href="nosotros.html">Nosotros</a></li>
-            <li><a href="servicios.html">Servicios</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="#" onclick="cargarPagina('nosotros.html'); return false;">Nosotros</a></li>
+            <li><a href="#" onclick="cargarPagina('servicios.html'); return false;">Servicios</a></li>
+            <li><a href="#" onclick="cargarPagina('servicios.html'); return false;">Contacto</a></li>
         </ul>
     </nav>
 </section>
@@ -32,6 +32,18 @@
     </div>
 </section> 
 
+<section id="nosotros">
+    <div id="contenido">
+    </div>
+</section>
+
+<section id="servicios">
+    <div id="contenido"></div>
+</section>
+
+<section id="contacto">
+    <div id="contenido"></div>
+</section>
 
 <footer class="footer">
     <div class="lista-footer">
@@ -63,6 +75,6 @@
         </ul>
     </div>
 </footer>
-
+<script src="/script/script.js"></script>
 </body>
 </html>
