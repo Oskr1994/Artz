@@ -25,3 +25,6 @@ function cargarPagina(pagina) {
             alert('No se pudo cargar la página.');
         });
 }
+function mostrarInicio() {
+    location.reload(); // Recarga la página completa
+}
