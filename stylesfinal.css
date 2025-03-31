@@ -35,39 +35,6 @@ body {
     color: white;
     text-decoration: none;
 }
-#nav-footer {
-    display: flex;
-    list-style: none;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    margin: 0;
-}
-.nav-footer {
-    display: flex;
-    list-style: none;
-    flex-wrap: wrap;
-    padding: 20px;
-    justify-content: center;
-    gap: 50px;
-    margin: 0;
-}
-.nav-footer a {
-    padding: 5px;
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-}
-.nav-footer a:hover {
-    background-color: white;
-    color: #009FE3;
-    border-radius: 10px;
-}
-.nav-btn a:hover {
-    background-color: white;
-    color: #009FE3;
-    border-radius: 10px;
-}
 
 .inicio {
     display: flex;
@@ -281,26 +248,23 @@ hr {
     flex-direction: column;
     background-color: #009FE3;
     color: white;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
     width: 100%;
+    margin: 0;
 
 }
 .lista-footer {
     display: flex;
     gap: 20px;
     justify-content: center;
+    padding-top: 15px;
 }
 
 .linea-footer {
-    width: 100%;
+    width: 35%;
     height: 2px;
     background-color: white;
     margin: 15px 0;
-    padding: 0;
-    right: 0;
+
 }
 .iconos-footer {
     width: 30px;
@@ -318,9 +282,41 @@ hr {
     justify-content: center;
     align-items: center;
     gap: 0;
+    padding-bottom: 20px;
 }
-
-
+#nav-footer {
+    display: flex;
+    list-style: none;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+.nav-footer {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    padding: 20px;
+    justify-content: center;
+    gap: 50px;
+    margin: 0;
+}
+.nav-footer a {
+    padding: 5px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+.nav-footer a:hover {
+    background-color: white;
+    color: #009FE3;
+    border-radius: 10px;
+}
+.nav-btn a:hover {
+    background-color: white;
+    color: #009FE3;
+    border-radius: 10px;
+}
 @media (max-width: 768px) {
 
     html, body {
@@ -422,5 +418,9 @@ hr {
     .formulario {
         padding: 20px;
         padding-bottom: 30px;
+    }
+    .nav-footer {
+        flex-wrap: wrap;
+        gap: 20px;
     }
 }
