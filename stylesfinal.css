@@ -155,7 +155,6 @@ hr {
     align-items: center;
     justify-content: center;
     width: 100vw;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 .contacto-box{
 
@@ -316,6 +315,21 @@ hr {
     background-color: white;
     color: #009FE3;
     border-radius: 10px;
+}
+.ubicacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 50px 0;
+}
+.mapa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.514);
 }
 @media (max-width: 768px) {
 
