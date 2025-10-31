@@ -1,34 +1,36 @@
+:root { --nav-h: 40px; }
 html, body {
     margin: 0;
-    padding: 0;
-    width: 100vw; /* Ancho de la ventana del navegador */
-    overflow-x: hidden; /* Evita el desplazamiento horizontal */
-    scroll-behavior: smooth; /* Hace que el desplazamiento sea suave */
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 body {
-    background-image: url("Imagenes/Fondo-estatico.jpg"); /* Establece la imagen de fondo */
-    background-size: cover; /* Ajusta el fondo al tamaño de la pantalla */
-    background-attachment: fixed; /* Hace que el fondo sea estático */
+    background-image: url("/static/imagenes/Fondo-estatico.jpg");
+    background-size: cover;
+    background-attachment: fixed;
     background-repeat: no-repeat;
+    padding-top: var(--nav-h);
 }
 .navbar {
-    position: fixed; /* Fija el elemento en la ventana del navegador */
-    width: 100%;
+    position: fixed;
     margin: 0;
-    padding: 0;
+    padding: 10px;
     background-color: #009FE3;
     display: flex;
-    justify-content: space-between; /* Distribuye los elementos con espacio igual entre ellos */
+    justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.9);
     z-index: 1000;
+    inset: 0 0 auto 0;
+    height: var(--nav-h);
 }
 .logo {
-    padding-left: 5px;
+    margin-left: 5px;
 }
 .nav-btn {
     display: flex;
     list-style: none;
+    gap: 5px;
 }
 .nav-btn a {
     padding: 10px;
@@ -41,18 +43,15 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 100vh;
-    width: 100vw;
+    min-height:100svh;
+    width: 100%;
     margin: 0;
+    opacity: 0;  
     animation: aparecer 3s ease-in-out forwards;
 }
 @keyframes aparecer {
-    0% {
-        opacity: 0; /* Al principio es invisible */
-    }
-    100% {
-        opacity: 1; /* Al final es completamente visible */
-    }
+  from{opacity:0}
+  to{opacity:1}
 }
 .btn-inicio {
     background-color: #009FE3;
@@ -67,7 +66,6 @@ body {
 .btn-inicio:hover {
     background-color: white;
     color: #009FE3;
-    border-color: #009FE3;
 }
 .titulo {
     width: 60%;
@@ -86,9 +84,7 @@ body {
 
 .textos-nosotros {
     width: 50%;
-    display: block;
     align-items: center;
-    justify-content: center;
     padding: 50px;
 }
 .parrafo-nosotros {
@@ -107,8 +103,11 @@ body {
     width: 100%; 
 }
 .servicios {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
     background-color: rgba(0, 0, 0, 0.4);
-    padding-bottom: 50px;
+    margin-top: 0px;
 }
 .diseño-digital, .diseño-impreso, .diseño-ux {
     width: 100%;
@@ -125,14 +124,16 @@ body {
 .bloques-servicios {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
     justify-content: center;
-    margin-top: 10px;
+    gap: 20px;
+    padding-bottom: 50px;
+    padding-top: 50px;
+    width: 100%;
 }
 
-.bloque1, .bloque2, .bloque3 {
+.bloques {
     background-color: rgba(0, 0, 0, 0.3);
-    width: 300px;
+    max-width: 300px;
     border: 2px solid white;
     border-radius: 10px;
     padding: 20px;
@@ -140,26 +141,21 @@ body {
     text-align: left;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
-
-.titulo1, .titulo2, .titulo3 {
+.titulos {
     padding-left: 15px;
-}
-hr {
-    border: none;
-    height: 2px;
-    background-color: white;
-    width: 90%;
 }
 .contacto {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100vw;
+    width: 100%;
 }
 .contacto-box{
-
     display: flex;
-    margin: 10%;
+    flex-wrap:wrap;
+    gap:0;
+    margin-top: 50px;
+    margin-bottom: 50px;
     width: 80%;
     justify-content: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
@@ -223,7 +219,6 @@ hr {
 .formulario button:hover {
     background-color: #009FE3;
     color: white;
-    border: 2px solid white;
 }
 .redes-sociales {
     display: flex;
@@ -231,16 +226,8 @@ hr {
     gap: 10px;
 }
 .iconos-redes {
-    width: 30px; /* Ancho del icono */
-    height: 30px; /* Altura del icono */
-}
-.menu-plegable {
-    display: none;
-    margin: 0;
-}
-.boton-plegable {
-    display: none;
-    margin: 0;
+    width: 30px;
+    height: 30px;
 }
 .footer {
     display: flex;
@@ -283,6 +270,17 @@ hr {
     gap: 0;
     padding-bottom: 20px;
 }
+.footer-legal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 10px;
+}
+.footer-legal a {
+    color: white;
+    text-decoration: none;
+}
 #nav-footer {
     display: flex;
     list-style: none;
@@ -301,16 +299,7 @@ hr {
     gap: 50px;
     margin: 0;
 }
-.nav-footer a {
-    padding: 5px;
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-}
-.nav-footer a:hover {
-    background-color: white;
-    color: #009FE3;
-    border-radius: 10px;
-}
+
 .nav-btn a:hover {
     background-color: white;
     color: #009FE3;
@@ -331,56 +320,54 @@ hr {
 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.514);
 }
+.menu-plegable {
+    display: none;
+    margin: 0;
+}
+.boton-plegable {
+    display: none;
+    margin: 0;
+}
 @media (max-width: 768px) {
 
     html, body {
-        margin: 0;
-        padding: 0;
-        width: 100vw;
         overflow-x: hidden;
         box-sizing: border-box;
     }
-    .navbar {
-        display: flex;
-        width: 100%;
-        margin: 0 auto; 
-        box-sizing: border-box;
+    .menu-plegable{
+    position:absolute; width:1px; height:1px; overflow:hidden;
+    clip: rect(0 0 0 0); white-space:nowrap; clip-path: inset(50%);
     }
+    .boton-plegable{
+    display:flex; margin-left:auto; cursor:pointer; padding:12px;
+    }
+    .nav-btn{
+    position:absolute;
+    top:40px;
+    left:0;
+    right:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    background: rgba(0,159,227);
+    box-shadow: 0 10px 10px rgba(0,0,0,.5);
+    padding:12px 0;
+    z-index:1001;
+    opacity:0;
+    pointer-events:none;
+    transition: opacity 1.5s ease;
+    will-change: opacity, transform;
+    }
+    .nav-btn a{ color:#fff; }
 
-    .boton-plegable {
-        display: flex;
-        cursor: pointer;
-        padding: 15px;
-        right: 0;
-    }
-    .nav-btn {
-        max-height: 0;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        right: 0;
-        width: 100%;
-        top: 30px;
-        background: rgb(0, 159, 227, 0.8);
-        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
-        opacity: 0;
-        transform: translateY(-10px);
-        transition: max-height 1s ease-in, opacity 1s ease-in, transform 2s ease-in;
-    }
-     #menu-boton:checked ~ .nav-btn {
-        max-height: 600px;
-        opacity: 1;
-        transform: translateY(0);
+    #menu-boton:checked ~ .nav-btn{
+    opacity:1;
+    pointer-events:auto;
     }
     .nav-btn li {
         text-align: center;
         padding: 10px;
-    }
-    .inicio {
-        height: 100vh;
-        width: 100vw;              
-        margin: 0;
     }
     .titulo {
         width: 95%;
@@ -410,19 +397,11 @@ hr {
     .imagen-nosotros img {
         width: 100%;
     }
-    .servicios {
-        padding-block: 50px;
-    }
     .titulo-servicios {
         padding-left: 30px;
     }
-    .bloques-servicios {
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-    }
-    .bloque1, .bloque2, .bloque3 {
-        width: 85%;
+    .bloques {
+        max-width: 80%;
         margin: 10px 10px;
     }
     .contacto-box {
