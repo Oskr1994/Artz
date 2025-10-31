@@ -48,28 +48,40 @@ body {
     margin: 0;
     opacity: 0;  
     animation: aparecer 3s ease-in-out forwards;
+    gap: 0px;
 }
 @keyframes aparecer {
   from{opacity:0}
   to{opacity:1}
 }
+.inicio h1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: #009FE3;
+    font-size: clamp(1.2rem, 6vw, 3.5rem);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 0;
+}
+.inicio h2 {
+    color: black;
+    font-size: clamp(.8rem, 3.5vw, 2rem);
+    font-weight: normal;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 10px 0 20px 0;
+}
+
 .btn-inicio {
     background-color: #009FE3;
     color: white;
     padding: 10px;
     text-align: center;
     text-decoration: none;
-    font-size: medium;
+    font-size: clamp(.5rem, 2.5vw, 1rem);
     border-radius: 20px;
     border: 2px solid #009FE3;
 }
 .btn-inicio:hover {
     background-color: white;
     color: #009FE3;
-}
-.titulo {
-    width: 60%;
-    display: flex;
 }
 .nosotros {
     background-color: white;
@@ -368,13 +380,6 @@ body {
     .nav-btn li {
         text-align: center;
         padding: 10px;
-    }
-    .titulo {
-        width: 95%;
-        display: flex;
-    }
-    .btn-inicio {
-        font-size: small;
     }
     .nosotros {
         display: flex;
