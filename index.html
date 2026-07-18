@@ -2,181 +2,177 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css2?family=Bevan&family=Oswald:wght@700;800&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARTZ — Diseño gráfico digital e impreso</title>
+    <meta name="description" content="ARTZ: transformamos ideas en diseños funcionales. Diseño digital, impreso y UX/UI en Perú.">
+    <link rel="icon" href="/static/imagenes/logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/styles.css">
-    <title>Artz</title>
 </head>
 <body>
-<header>
-    <nav class="navbar">
-        <div class="logo">
-            <a href="#inicio"><img src="/static/imagenes/logo.png" alt="Logo ARTZ" width="70px"></a>
-        </div>
-        <input type="checkbox" id="menu-boton" class="menu-plegable">
-        <label for="menu-boton" class="boton-plegable">
-            <img src="/static/imagenes/menu.png" alt="Menú" width="20px">
-        </label>
-        <ul class="nav-btn">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#nosotros">Nosotros</a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
+
+<header class="nav" id="nav">
+    <a class="nav-logo" href="#inicio">
+        <img src="/static/imagenes/logo.png" alt="Logo ARTZ">
+        <span>ARTZ</span>
+    </a>
+    <nav class="nav-links" id="nav-links">
+        <a href="#inicio"><em>01</em> Inicio</a>
+        <a href="#nosotros"><em>02</em> Nosotros</a>
+        <a href="#servicios"><em>03</em> Servicios</a>
+        <a href="#contacto"><em>04</em> Contacto</a>
     </nav>
+    <a class="nav-cta" href="https://wa.me/51969792034?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Artz" target="_blank" rel="noopener">Hablemos</a>
+    <button class="nav-burger" id="nav-burger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
 </header>
 
 <main>
-    <section id="inicio" >
-        <div class="inicio">
-            <h1>TRANSOFMAMOS IDEAS<br>EN DISEÑOS FUNCIONALES</h1>
-            <h2>ELEVA TU MARCA CON CREATIVIDAD<br>QUE IMPACTA Y EMOCIONA</h2>
-            <a href="#contacto" class="btn-inicio">¡HAZ QUE TU IMAGEN<br>HABLE POR TI!</a>
-        </div>
-    </section> 
 
-    <section id="nosotros">
-        <div class="nosotros">
-            <div class="textos-nosotros">
-                <h1><span class="border-top"></span>TRABAJAMOS<br> PARA TI</h1>
-                <p class="parrafo-nosotros">
-                    En ARTZ, convertimos ideas en diseños impactantes. 
-                    Con más de 5 años de experiencia, nos especializamos 
-                    en crear identidades visuales únicas que conectan con 
+    <section id="inicio" class="hero">
+        <div class="hero-bg" aria-hidden="true">
+            <div class="hero-slide is-active" style="background-image:url('/static/imagenes/Fondo-estatico.jpg')"></div>
+            <div class="hero-slide" style="background-image:url('/static/imagenes/trab.png')"></div>
+        </div>
+        <div class="hero-inner">
+            <p class="hero-tag reveal">Estudio de diseño gráfico</p>
+            <h1 class="reveal">Transformamos ideas<br>en diseños funcionales</h1>
+            <p class="hero-sub reveal">Eleva tu marca con creatividad que impacta y emociona.</p>
+            <div class="hero-ctas reveal">
+                <a class="btn btn-solid" href="#contacto">¡Haz que tu imagen hable por ti!</a>
+                <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+            </div>
+        </div>
+        <div class="hero-foot">
+            <span>01 / Inicio</span>
+            <span>Diseño digital · impreso · UX/UI</span>
+        </div>
+    </section>
+
+    <section id="nosotros" class="block">
+        <div class="block-head reveal">
+            <span class="block-num">02 / Nosotros</span>
+            <hr>
+        </div>
+        <div class="nosotros-grid">
+            <div class="reveal">
+                <h2>Trabajamos<br>para ti</h2>
+                <p class="lead">
+                    En ARTZ convertimos ideas en diseños impactantes.
+                    Con más de 5 años de experiencia, nos especializamos
+                    en crear identidades visuales únicas que conectan con
                     el público y hacen destacar a cada marca.
-                    Nuestra misión es fusionar creatividad y estrategia 
-                    para ofrecer soluciones gráficas innovadoras. Desde la 
-                    conceptualización hasta la entrega final, cada proyecto es 
-                    un reflejo de nuestra pasión por el diseño y nuestro compromiso 
+                </p>
+                <p>
+                    Nuestra misión es fusionar creatividad y estrategia
+                    para ofrecer soluciones gráficas innovadoras. Desde la
+                    conceptualización hasta la entrega final, cada proyecto es
+                    un reflejo de nuestra pasión por el diseño y nuestro compromiso
                     con la excelencia.
                 </p>
             </div>
-            <div class="imagen-nosotros">
-                <img src="/static/imagenes/trab.png" alt="Imagen Nosotros">
-            </div>
+            <figure class="nosotros-img reveal">
+                <img src="/static/imagenes/trab.png" alt="Trabajos de diseño de ARTZ">
+            </figure>
         </div>
-    </section> 
+    </section>
 
-    <section id="servicios" class="servicios">
-        <div class="titulo-servicios">
-            <h2><br><span class="border-top-white"></span>
-                ¿NECESITAS<br>
-                DISEÑO GRAFICO<br>
-                DIGITAL E IMPRESO?</h2><br>
+    <section id="servicios" class="block block-alt">
+        <div class="block-head reveal">
+            <span class="block-num">03 / Servicios</span>
+            <hr>
         </div>
-        <div class="bloques-servicios">
-            <div class="bloques">
-                <img src="/static/imagenes/diseño-digital.png" alt="diseño digital" class="diseño-digital">
-                <h3 class="titulos">Diseño<br>Digital</h3>
-                <hr>
-                <ul> 
-                    <li>Logotipo.</li>
-                    <li>Manual de marca.</li>
-                    <li>Brandboard.</li>
-                    <li>Diseño para redes<br>sociales y banners.</li>
-                </ul>
-            </div>
-            <div class="bloques">
-                <img src="/static/imagenes/diseño-impreso.png" alt="diseño impreso" class="diseño-impreso">
-                <h3 class="titulo2">Diseño<br>Impreso</h3>
-                <hr>
+        <h2 class="reveal">¿Necesitas diseño gráfico<br>digital e impreso?</h2>
+        <div class="cards">
+            <article class="card reveal">
+                <img src="/static/imagenes/diseno-digital.png" alt="Ícono diseño digital">
+                <h3>Diseño digital</h3>
                 <ul>
-                    <li>Bolantes.</li>
-                    <li>Revistas.</li>
-                    <li>Brochures.</li>
-                    <li>Papeleria y más...</li>
+                    <li>Logotipo</li>
+                    <li>Manual de marca</li>
+                    <li>Brandboard</li>
+                    <li>Diseño para redes sociales y banners</li>
                 </ul>
-            </div>
-            <div class="bloques">
-                <img src="/static/imagenes/ui-ux.png" alt="diseño ux/ui" class="diseño-ux">
-                <h3 class="titulos">Diseño<br>UX/UI</h3>
-                <hr>
+            </article>
+            <article class="card reveal">
+                <img src="/static/imagenes/diseno-impreso.png" alt="Ícono diseño impreso">
+                <h3>Diseño impreso</h3>
                 <ul>
-                    <li>Diseño de interfaces.</li>
-                    <li>Prototipado interactivo.</li>
-                    <li>Wireframes.</li>
-                    <li>Experiencia de usuario (UX).</li>
+                    <li>Volantes</li>
+                    <li>Revistas</li>
+                    <li>Brochures</li>
+                    <li>Papelería y más</li>
                 </ul>
-            </div>        
+            </article>
+            <article class="card reveal">
+                <img src="/static/imagenes/ui-ux.png" alt="Ícono diseño UX/UI">
+                <h3>Diseño UX/UI</h3>
+                <ul>
+                    <li>Diseño de interfaces</li>
+                    <li>Prototipado interactivo</li>
+                    <li>Wireframes</li>
+                    <li>Experiencia de usuario (UX)</li>
+                </ul>
+            </article>
         </div>
-    </section> 
+    </section>
 
-    <section id="contacto" class="contacto">
-        <div class="contacto-box">
-            <div class="info-contacto">
-                <h2>
-                    <span class="border-top"></span>
-                    Informacion de contacto:
-                </h2>
-                WhatsApp
-                <p>+51 969-7920-34</p><br>
-                Instagram<br>
-                <p>@artzdisenografico</p><br>
-                Correo Electrónico<br>
-                <p>contacto@artz.com</p><br>
-                <div class="redes-sociales">
-                    <a href="https://wa.me/51969792034?text=Hola%2C%20quiero%20más%20información%20sobre%20Artz" target="_blank">
-                        <img src="/static/imagenes/whatsapp1.png" alt="correo Icon" class="iconos-redes"></a>
-                    <a href="https://instagram.com/artzdisenografico" target="_blank">
-                        <img src="/static/imagenes/instagram1.png" alt="instagram Icon" class="iconos-redes"></a>
-                    <a class="iconos-redes" href="contacto@artz.com" target="_blank">
-                            <img src="/static/imagenes/email.png" alt="WhatsApp Icon" class="iconos-redes" ></a>
+    <section id="contacto" class="block">
+        <div class="block-head reveal">
+            <span class="block-num">04 / Contacto</span>
+            <hr>
+        </div>
+        <div class="contacto-grid">
+            <div class="reveal">
+                <h2>Conversemos<br>tu proyecto</h2>
+                <dl class="contacto-info">
+                    <dt>WhatsApp</dt>
+                    <dd><a href="https://wa.me/51969792034" target="_blank" rel="noopener">+51 969 792 034</a></dd>
+                    <dt>Instagram</dt>
+                    <dd><a href="https://instagram.com/artzdisenografico" target="_blank" rel="noopener">@artzdisenografico</a></dd>
+                    <dt>Correo electrónico</dt>
+                    <dd><a href="mailto:contacto@artz.com">contacto@artz.com</a></dd>
+                </dl>
+                <div class="redes">
+                    <a href="https://wa.me/51969792034?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Artz" target="_blank" rel="noopener" aria-label="WhatsApp">
+                        <img src="/static/imagenes/whatsapp1.png" alt="WhatsApp"></a>
+                    <a href="https://instagram.com/artzdisenografico" target="_blank" rel="noopener" aria-label="Instagram">
+                        <img src="/static/imagenes/instagram1.png" alt="Instagram"></a>
+                    <a href="mailto:contacto@artz.com" aria-label="Correo">
+                        <img src="/static/imagenes/email.png" alt="Correo"></a>
                 </div>
             </div>
-            <div class="formulario">
-                <h2>Contactanos</h2>
-                <form action="https://example.com/contact" method="POST">
-                    <input type="text" name="nombre" placeholder="Nombre" required>
-                    <input type="email" name="email" placeholder="Email" required>
-                    <textarea name="mensaje" rows="4" placeholder="Escriba un mensaje" required></textarea>
-                    <div class="btn-enviar"><button type="submit">Enviar</button></div>
-                </form>
-            </div>
-        </div>
-
-    </section>
-
-    <section class="ubicacion">
-        <div class="mapa">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.068019252177!2d-77.0003957249368!3d-12.
-            175772388071229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b9ae8ba444bd%3A0xba176354a94e3126!2sGimnasio
-            %20Smart%20Fit%20-%20Faisanes!5e0!3m2!1ses-419!2spe!4v1744821606965!5m2!1ses-419!2spe" 
-            width="100%" 
-            height="400" 
-            style="border:0; border-radius: 10px;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <form class="contacto-form reveal" id="form-contacto">
+                <h3>Contáctanos</h3>
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="mensaje" rows="4" placeholder="Escribe un mensaje" required></textarea>
+                <button type="submit" class="btn btn-solid">Enviar por WhatsApp</button>
+                <p class="form-nota">Tu mensaje se abrirá en WhatsApp listo para enviar.</p>
+            </form>
         </div>
     </section>
+
 </main>
 
 <footer class="footer">
-    <div class="lista-footer">
-        <div class="linea-footer"></div>
-        <div class="redes-sociales">
-            <a href="https://wa.me/51969792034?text=Hola%2C%20quiero%20más%20información%20sobre%20Artz" target="_blank">
-                <img src="/static/imagenes/whatsapp-blanco.png" alt="correo Icon" class="iconos-footer"></a>
-            <a href="https://instagram.com/artzdisenografico" target="_blank">
-                <img src="/static/imagenes/instagram-blanco.png" alt="instagram Icon" class="iconos-footer"></a>
-            <a class="iconos-redes" href="contacto@artz.com" target="_blank">
-                <img src="/static/imagenes/email-blanco.png" alt="WhatsApp Icon" class="iconos-footer" ></a>
-            <a class="iconos-redes" href="contacto@artz.com" target="_blank">
-                <img src="/static/imagenes/linkedin-blanco.png" alt="WhatsApp Icon" class="iconos-footer" ></a>
-            <a class="iconos-redes" href="contacto@artz.com" target="_blank">
-                <img src="/static/imagenes/facebook-blanco.png" alt="WhatsApp Icon" class="iconos-footer" ></a>
-            </div>
-        <div class="linea-footer"></div>
+    <div class="footer-top">
+        <img class="footer-logo" src="/static/imagenes/logo.png" alt="Logo ARTZ">
+        <div class="redes">
+            <a href="https://wa.me/51969792034?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Artz" target="_blank" rel="noopener" aria-label="WhatsApp">
+                <img src="/static/imagenes/whatsapp-blanco.png" alt="WhatsApp"></a>
+            <a href="https://instagram.com/artzdisenografico" target="_blank" rel="noopener" aria-label="Instagram">
+                <img src="/static/imagenes/instagram-blanco.png" alt="Instagram"></a>
+            <a href="mailto:contacto@artz.com" aria-label="Correo">
+                <img src="/static/imagenes/email-blanco.png" alt="Correo"></a>
+        </div>
     </div>
-
-    <div class="footer-logo">
-        <img src="/static/imagenes/logo.png" alt="Logo ARTZ" width="120px">
-    </div>
-    <div class="footer-legal"><a href="/privacidad">Política de privacidad</a>
-        <a href="/terminos">Términos</a>
-        <a>&copy; 2025 Artz.top</a>
-    </div>
+    <p class="footer-legal">&copy; 2026 Artz.top — Estudio de diseño gráfico</p>
 </footer>
 
+<script src="/static/js/main.js"></script>
 </body>
 </html>
