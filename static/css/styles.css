@@ -62,7 +62,11 @@ a { color: inherit; }
   font-size: 1.15rem;
   letter-spacing: 0.14em;
 }
-.nav-logo img { width: 40px; height: auto; }
+.nav-logo img { height: 30px; width: auto; display: block; }
+/* El wordmark blanco vive sobre el hero; el oscuro, sobre la barra sólida */
+.nav-logo .logo-dark { display: none; }
+.nav.is-solid .logo-light { display: none; }
+.nav.is-solid .logo-dark { display: block; }
 .nav-links {
   display: flex;
   gap: 1.8rem;
@@ -419,6 +423,8 @@ a { color: inherit; }
   .nav-links.is-open { display: flex; }
   .nav-links a { padding: 0.9rem clamp(1rem, 4vw, 3rem); }
   .nav.menu-open { background: rgba(247, 245, 241, 0.98); color: var(--ink); }
+  .nav.menu-open .logo-light { display: none; }
+  .nav.menu-open .logo-dark { display: block; }
   .nav-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .nav-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
   .nav-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
