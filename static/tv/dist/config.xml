@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets"
+        xmlns:tizen="http://tizen.org/ns/widgets"
+        id="http://oscar-dev.lat/FastPlay" version="1.1.0" viewmodes="maximized">
+  <!-- El `package` tiene que ser de EXACTAMENTE 10 caracteres alfanuméricos.
+       Con 9 (`FastPlay0`) el televisor rechazaba el .wgt con
+       `install failed[118, -19], reason: Parsing error`, sin mencionar el
+       package id por ninguna parte. El `id` es `<package>.<nombre>`. -->
+  <tizen:application id="FastPlay00.FastPlay" package="FastPlay00" required_version="2.4"/>
+  <tizen:profile name="tv"/>
+  <name>FastPlay</name>
+  <content src="index.html"/>
+  <icon src="icon.png"/>
+  <feature name="http://tizen.org/feature/screen.size.normal.1080.1920"/>
+
+  <tizen:privilege name="http://tizen.org/privilege/internet"/>
+  <!-- Necesario para `tizen.tvinputdevice.registerKey`: sin esto las teclas de
+       reproducción del mando se las queda el televisor y nunca llegan a la app. -->
+  <tizen:privilege name="http://tizen.org/privilege/tv.inputdevice"/>
+
+  <!-- La app habla con DOS sitios, y solo uno se puede declarar:
+
+       1. El nuestro, y solo para entrar: `POST /api/v1/tv/acceso`, al abrir y
+          cada seis horas. Ese sí se sabe de antemano.
+       2. El panel del proveedor —catálogo por `player_api.php`, vídeo por
+          `/live/`, carátulas del mismo host—, que SALE DEL CÓDIGO DE ACCESO y
+          por tanto no se sabe al empaquetar. Aquí ponía `digitalsmarther.com`;
+          con el panel dependiendo del código dejó de tener sentido, y por eso
+          hay un `origin="*"`.
+
+       Aviso: en este televisor (Tizen 6.0) `<access>` NO se está aplicando a
+       las peticiones XHR — se comprobó alcanzando un host no declarado. Así
+       que en la práctica esto no bloquea nada; documenta la intención, y lo
+       que documenta ahora es que el destino es variable a propósito. -->
+  <access origin="https://fast-play.oscar-dev.lat" subdomains="false"/>
+  <access origin="*"/>
+  <tizen:allow-navigation>fast-play.oscar-dev.lat</tizen:allow-navigation>
+
+  <!-- `hwkey-event="enable"` es lo que hace que la tecla ATRÁS (10009) llegue a
+       JavaScript. Sin ello el televisor la intercepta y cierra la aplicación.
+       ATRÁS oculta la interfaz sobre el vídeo, y una segunda pulsación dentro
+       de 2 s sale de la app. -->
+  <tizen:setting screen-orientation="landscape" background-support="disable"
+                 encryption="disable" install-location="auto" hwkey-event="enable"/>
+</widget>

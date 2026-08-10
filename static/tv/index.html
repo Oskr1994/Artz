@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>FastPlay</title>
+    <!-- Lo inyecta el televisor al instalar el .wgt. En Chromium da 404 y no
+         pasa nada: todo el código consulta `window.webapis` antes de usarlo,
+         y sin él la app cae al reproductor de respaldo (mpegts.js). Eso es lo
+         que permite desarrollar y probar la interfaz entera sin televisor. -->
+    <script src="$WEBAPIS/webapis/webapis.js"></script>
+  </head>
+  <body>
+    <div id="raiz"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

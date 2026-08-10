@@ -1,0 +1,1006 @@
+/* FastPlay TV — hoja de estilos para televisor.
+ *
+ * Distancia de visión de tres metros, no de cincuenta centímetros: nada baja de
+ * 24 px, el foco se ve desde el sofá y no existe el `:hover`, porque un mando
+ * no tiene puntero.
+ *
+ * Los colores son los MISMOS de la web, copiados literalmente de
+ * frontend/src/styles/marca.css. No se retoca ni un valor de marca. */
+
+:root {
+  --fondo: #0a0e17;
+  --superficie: #121826;
+  --superficie-alta: #1a2133;
+  --borde: #212a3d;
+  --azul: #1a3a6b;
+  --turquesa: #12c2b0;
+  --texto: #f2f6fb;
+  --texto-suave: #8a99b3;
+  --error: #ff6b6b;
+  --aviso: #ffc857;
+  --radio: 12px;
+  --sombra: 0 8px 32px rgba(0, 0, 0, 0.5);
+
+  /* Zona segura. Muchos televisores recortan los bordes del panel
+     ("overscan"), así que nada importante se pinta pegado al borde. */
+  --margen-seguro: 48px;
+
+  /* Mismo armazón que la web —barra lateral + lista a la derecha— con las
+     medidas subidas para 1920x1080 y distancia de sofá. En la web son 236 px
+     de lateral y 380 px de lista; aquí casi el doble, porque el texto pasa de
+     15 px a 26 px y los objetivos del mando tienen que ser mucho mayores. */
+  --lateral: 420px;
+  --panel: 620px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden; /* Un televisor no tiene barra de desplazamiento. */
+  /* TRANSPARENTE, no `var(--fondo)`. En Tizen, AVPlay no pinta dentro del DOM:
+     usa un plano de hardware POR DEBAJO de la página. Con `html`/`body` opacos
+     la página tapa el vídeo por completo y el síntoma es desconcertante, porque
+     todo lo demás va bien: `getState()` devuelve PLAYING, el reloj avanza y no
+     hay un solo error en consola, pero la pantalla se queda en negro.
+     Cada pantalla que necesita fondo propio ya lo trae (`.acceso`,
+     `.reproductor__vacio`, `.reproductor__cargando`, `.panel`). */
+  background: transparent;
+  color: var(--texto);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 26px;
+  line-height: 1.4;
+}
+
+/* En el televisor AVPlay pinta en un plano de vídeo POR DEBAJO de la página.
+   Si el fondo fuera opaco taparía el vídeo por completo: el reproductor deja
+   su rectángulo transparente y por eso `body` no puede pintar encima. */
+#raiz { width: 1920px; height: 1080px; position: relative; }
+
+/* --- Foco -----------------------------------------------------------------
+   Lo más importante de toda esta hoja. Si no se ve qué está enfocado, el mando
+   es inservible. Un borde fino no basta a tres metros: hace falta escala,
+   contraste y sombra a la vez. */
+.enfocable {
+  outline: none;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+.enfocable[data-enfocado] {
+  transform: scale(1.05);
+  background: var(--superficie-alta);
+  box-shadow: 0 0 0 4px var(--turquesa), 0 12px 40px rgba(0, 0, 0, 0.7);
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Estructura ------------------------------------------------------------
+   Barra lateral fija + zona principal, igual que la web. */
+.app { width: 1920px; height: 1080px; display: flex; }
+
+.lateral {
+  width: var(--lateral);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 32px 20px 24px;
+  /* Casi negro, más oscuro que `--fondo`, exactamente como en la web: el
+     logotipo original se lee bien encima y no hay que recolorearlo. */
+  background: #070b12;
+  border-right: 1px solid var(--borde);
+  overflow-y: auto;
+  z-index: 5;
+}
+
+.lateral__marca { padding: 0 12px 4px; }
+.lateral__logo { height: 52px; display: block; }
+
+.lateral__nav { display: flex; flex-direction: column; gap: 4px; }
+
+.lateral__enlace {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  color: var(--texto-suave);
+  font-size: 28px;
+}
+
+.lateral__enlace.es-activo {
+  color: var(--turquesa);
+  background: rgba(18, 194, 176, 0.14);
+  font-weight: 600;
+}
+
+.icono { flex-shrink: 0; }
+
+.lateral__categorias {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border-top: 1px solid var(--borde);
+  padding-top: 24px;
+  /* La lista de categorías es lo único que puede crecer: se desplaza ella y
+     deja la navegación y el pie siempre a la vista. */
+  overflow-y: auto;
+}
+
+.lateral__epigrafe {
+  margin: 0 0 12px;
+  padding: 0 18px;
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #5c6a83;
+}
+
+.lateral__categoria {
+  padding: 12px 18px;
+  border-radius: 10px;
+  color: var(--texto-suave);
+  font-size: 24px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lateral__categoria.es-activa { color: var(--turquesa); font-weight: 600; }
+
+.lateral__pie {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px solid var(--borde);
+  padding-top: 20px;
+}
+
+.lateral__avatar {
+  width: 52px; height: 52px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: var(--turquesa);
+  color: #06231f;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.lateral__usuario {
+  font-size: 24px;
+  color: var(--texto-suave);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  /* Se come el hueco sobrante para empujar el botón de salir al extremo, y se
+     recorta si el nombre es largo en vez de desplazarlo fuera. */
+  flex: 1;
+  min-width: 0;
+}
+
+.lateral__salir {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  color: var(--texto-suave);
+}
+
+.lateral__salir[data-enfocado] { border-color: var(--turquesa); color: var(--turquesa); }
+
+/* Armado: rojo, para que se distinga de "enfocado" a simple vista. */
+.lateral__salir.es-confirmando { color: var(--error); }
+.lateral__salir.es-confirmando[data-enfocado] { border-color: var(--error); }
+
+.lateral__aviso-salir {
+  margin: 12px 0 0;
+  font-size: 20px;
+  line-height: 1.3;
+  color: var(--error);
+}
+
+.principal { flex: 1; position: relative; }
+
+.envivo, .buscar, .milista { width: 100%; height: 100%; position: relative; }
+
+/* --- Reproductor ----------------------------------------------------------- */
+/* Ocupa la columna central: desde el borde de la barra lateral hasta donde
+   empieza la lista de canales, igual que en la web. */
+.reproductor {
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  right: var(--panel);
+  /* Transparente: en Tizen, AVPlay pinta detrás de la página. Poner un fondo
+     aquí dejaría la pantalla en negro con el audio sonando, que es el síntoma
+     más desconcertante de todos. */
+  background: transparent;
+}
+
+.reproductor__video { width: 100%; height: 100%; object-fit: contain; background: #000; }
+
+.reproductor__vacio, .reproductor__cargando {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  /* Recuadro del hueco del reproductor, como en la imagen de la web: superficie
+     ligeramente más clara que el fondo y esquinas redondeadas, para que se lea
+     como "aquí va el vídeo" y no como una pantalla apagada. */
+  margin: var(--margen-seguro);
+  border-radius: var(--radio);
+  background: var(--superficie);
+  color: var(--texto-suave);
+}
+
+/* Marcador de posición del reproductor sin canal: un rectángulo con la
+   proporción de un fotograma, para que el hueco se lea como "aquí va el vídeo"
+   y no como una pantalla rota. */
+.reproductor__marcador {
+  width: 420px;
+  height: 236px;
+  border: 3px dashed var(--borde);
+  border-radius: var(--radio);
+}
+
+/* Pulso de carga. Sin animación, un televisor lento parece colgado. */
+.reproductor__pulso {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 5px solid var(--borde);
+  border-top-color: var(--turquesa);
+  animation: girar 0.9s linear infinite;
+}
+
+@keyframes girar { to { transform: rotate(360deg); } }
+
+.reproductor__nombre {
+  position: absolute;
+  left: var(--margen-seguro);
+  bottom: var(--margen-seguro);
+  margin: 0;
+  padding: 12px 28px;
+  font-size: 34px;
+  background: rgba(10, 14, 23, 0.75);
+  border-radius: var(--radio);
+}
+
+.reproductor__error {
+  position: absolute;
+  left: var(--margen-seguro);
+  bottom: 140px;
+  margin: 0;
+  padding: 16px 28px;
+  color: var(--error);
+  background: rgba(10, 14, 23, 0.9);
+  border-radius: var(--radio);
+  max-width: 900px;
+}
+
+/* --- Panel lateral --------------------------------------------------------- */
+.panel {
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: var(--panel);
+  background: rgba(18, 24, 38, 0.975);
+  border-left: 1px solid var(--borde);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 4;
+}
+
+.panel__epigrafe {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+
+.panel__categorias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  max-height: 180px;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.categoria {
+  padding: 10px 22px;
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  font-size: 24px;
+  color: var(--texto-suave);
+  white-space: nowrap;
+}
+
+.categoria.es-activa { color: var(--texto); border-color: var(--turquesa); }
+
+.panel__canales { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; }
+
+.panel__aviso { color: var(--texto-suave); font-size: 24px; padding: 16px 8px; margin: 0; }
+
+/* Fila = canal + estrella, dos objetivos separados como en la web. Con un
+   mando la estrella es un navegable más: se llega con DERECHA desde el canal. */
+.fila-canal { display: flex; align-items: stretch; gap: 8px; flex-shrink: 0; }
+
+.canal {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-height: 76px;
+  padding: 12px 18px;
+  border-radius: var(--radio);
+  font-size: 26px;
+  background: var(--superficie);
+  /* El borde va SIEMPRE, transparente cuando no está activo: si apareciera
+     solo al activarse, la fila se desplazaría 5 px bajo el foco del usuario. */
+  border-left: 5px solid transparent;
+  min-width: 0; /* deja que el nombre pueda recortarse con puntos suspensivos */
+}
+
+.canal.es-activo {
+  background: var(--superficie-alta);
+  border-left-color: var(--turquesa);
+}
+
+.canal.es-activo .canal__nombre { color: var(--turquesa); font-weight: 600; }
+
+.canal__favorito {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 84px;
+  flex-shrink: 0;
+  border-radius: var(--radio);
+  background: var(--superficie);
+  color: var(--texto-suave);
+}
+
+.canal__favorito.es-guardado { color: var(--aviso); }
+
+.canal__logo {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: var(--fondo);
+  flex-shrink: 0;
+}
+
+/* Marcador de posición del canal sin logotipo: la inicial dentro de la misma
+   caja. Sin esto el nombre se desplazaría a la izquierda y la lista quedaría
+   desalineada, porque muchos canales del panel no traen icono. */
+.canal__logo--inicial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--superficie-alta);
+  border-radius: 8px;
+  color: var(--texto-suave);
+  font-size: 24px;
+}
+
+.canal__nombre { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.canal__guia {
+  margin-left: auto;
+  font-size: 18px;
+  color: var(--turquesa);
+  border: 1px solid var(--turquesa);
+  border-radius: 999px;
+  padding: 2px 12px;
+}
+
+/* Marcadores de posición de la lista: conservan la altura de fila para que al
+   llegar los datos la lista no dé un salto bajo el foco del usuario. */
+.canal--marcador { opacity: 0.5; }
+
+.canal__logo--marcador { background: var(--superficie-alta); border-radius: 8px; }
+
+.canal__nombre--marcador {
+  height: 26px;
+  flex: 1;
+  background: var(--superficie-alta);
+  border-radius: 6px;
+  animation: latir 1.4s ease-in-out infinite;
+}
+
+@keyframes latir { 0%, 100% { opacity: 0.35; } 50% { opacity: 0.7; } }
+
+/* --- Ahora / Después ------------------------------------------------------- */
+.ahora {
+  position: absolute;
+  left: var(--margen-seguro);
+  bottom: 130px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 900px;
+  z-index: 3;
+}
+
+.ahora__epigrafe {
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--turquesa);
+}
+
+.ahora__titulo {
+  font-size: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* --- Acceso ---------------------------------------------------------------- */
+.acceso {
+  width: 1920px;
+  height: 1080px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  background: var(--fondo);
+}
+
+.acceso__logo { height: 72px; margin-bottom: 8px; }
+
+.acceso__intro { margin: 0; color: var(--texto-suave); font-size: 26px; }
+
+.acceso__campos { display: flex; gap: 32px; }
+
+.acceso__campo {
+  width: 460px;
+  padding: 20px 28px;
+  border: 2px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--superficie);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.acceso__campo.es-activo { border-color: var(--turquesa); }
+
+.acceso__etiqueta {
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+
+.acceso__valor { font-size: 30px; min-height: 42px; }
+
+/* Marcador de posición de un campo vacío: se distingue del texto escrito por
+   el color y la cursiva, nunca solo por el color. */
+.es-marcador { color: var(--texto-suave); font-style: italic; }
+
+.acceso__aviso { color: var(--aviso); margin: 0; }
+.acceso__error { color: var(--error); margin: 0; }
+
+/* --- Teclado en pantalla ---------------------------------------------------- */
+.teclado { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+
+.teclado__fila { display: flex; gap: 10px; }
+
+.teclado__tecla {
+  width: 74px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  font-size: 28px;
+}
+
+.teclado__tecla--ancha { width: 220px; }
+
+/* El teclado del BUSCADOR vive dentro de contenedores de anchos muy distintos:
+   la lista de canales son 620 px y la rejilla de películas 1 500. Con las teclas
+   fijas de 74 px, una fila de diez mide 830 px y en la lista se salía por los
+   dos lados —quedaban cortadas la `0`, la `p` y la `-`—, porque `.teclado` las
+   centra. Aquí se reparten el ancho que haya, sin pasar del tamaño de la
+   pantalla de acceso, que es el bueno cuando sobra sitio.
+   La pantalla de acceso NO se toca: sus medidas están validadas contra el
+   televisor. */
+/* Las filas tienen que OCUPAR el ancho del contenedor para que haya algo que
+   repartir. `.teclado` las centra con `align-items: center`, y eso las encoge
+   al contenido: con `flex: 1 1 0` las teclas se quedaban en 17 px. */
+.buscador--abierto .teclado { align-items: stretch; }
+.buscador--abierto .teclado__fila { justify-content: center; }
+
+.buscador--abierto .teclado__tecla {
+  flex: 1 1 0;
+  width: auto;
+  /* Sin esto, una caja flexible nunca baja de su contenido y la fila seguiría
+     sobresaliendo. */
+  min-width: 0;
+  max-width: 74px;
+  height: 60px;
+}
+
+.buscador--abierto .teclado__tecla--ancha { flex: 3 1 0; max-width: 220px; }
+
+.teclado__tecla--principal { border-color: var(--turquesa); color: var(--turquesa); }
+
+.buscar__consulta {
+  margin: 0;
+  padding: 16px 20px;
+  min-height: 66px;
+  font-size: 28px;
+  background: var(--superficie);
+  border: 2px solid var(--borde);
+  border-radius: var(--radio);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* --- Barras de desplazamiento ----------------------------------------------
+   Mismo criterio que la web: delgadas y turquesa, nunca las de fábrica. */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(18, 194, 176, 0.4); border-radius: 3px; }
+
+/* --- Interfaz oculta sobre el vídeo -----------------------------------------
+   ATRÁS deja el vídeo limpio. Siguen visibles a propósito el cargando, el
+   estado sin canal y sobre todo el error: un fallo con la interfaz oculta
+   tiene que verse igual. */
+.app.es-limpia .lateral,
+.app.es-limpia .panel,
+.app.es-limpia .ahora,
+.app.es-limpia .rejilla,
+.app.es-limpia .ficha,
+.app.es-limpia .ficha-serie,
+.app.es-limpia .reproductor__nombre { display: none; }
+
+/* Sin barra ni lista, el vídeo pasa a ocupar la pantalla entera. El rectángulo
+   de AVPlay se recoloca en paralelo desde `Reproductor.jsx`: esto solo mueve la
+   capa web, el plano de vídeo va por su cuenta. */
+.app.es-limpia .reproductor { right: 0; }
+.app.es-limpia .reproductor__vacio,
+.app.es-limpia .reproductor__cargando { margin: 0; border-radius: 0; }
+
+.aviso-salir {
+  position: absolute;
+  left: 50%;
+  bottom: var(--margen-seguro);
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 12px 28px;
+  font-size: 28px;
+  background: rgba(10, 14, 23, 0.75);
+  border-radius: var(--radio);
+  z-index: 6;
+}
+
+/* --- Respaldo de `gap` en flexbox -------------------------------------------
+   El televisor es Chromium 76 y `gap` en FLEXBOX no llegó hasta Chrome 84 (en
+   grid sí funciona antes, por eso `CSS.supports('gap','10px')` devuelve `true`
+   y NO sirve para detectarlo: hay que medir dos cajas reales). Ningún
+   transpilador puede polirrellenarlo, así que se replica con márgenes.
+
+   Se dejan también las declaraciones `gap` de arriba: en un motor moderno
+   mandan ellas y estos márgenes son inofensivos por ser del mismo tamaño. */
+.lateral > * + * { margin-top: 28px; }
+.lateral__nav > * + * { margin-top: 4px; }
+.lateral__enlace > * + * { margin-left: 18px; }
+.lateral__categorias > * + * { margin-top: 2px; }
+.lateral__pie > * + * { margin-left: 14px; }
+.fila-canal > * + * { margin-left: 8px; }
+.reproductor__vacio > * + *,
+.reproductor__cargando > * + * { margin-top: 24px; }
+.panel > * + * { margin-top: 20px; }
+.panel__canales > * + * { margin-top: 8px; }
+.canal > * + * { margin-left: 18px; }
+.ahora > * + * { margin-top: 4px; }
+.acceso > * + * { margin-top: 24px; }
+.acceso__campos > * + * { margin-left: 32px; }
+.acceso__campo > * + * { margin-top: 6px; }
+.teclado > * + * { margin-top: 10px; }
+.teclado__fila > * + * { margin-left: 10px; }
+/* El de categorías envuelve, así que necesita separación en los dos ejes. */
+.panel__categorias > * { margin: 0 12px 12px 0; }
+.buscador__campo > * + * { margin-left: 14px; }
+.rejilla__paginas > * + * { margin-left: 20px; }
+.ficha > * + * { margin-left: 48px; }
+.episodio > * + * { margin-left: 20px; }
+/* El de temporadas envuelve: separación en los dos ejes. */
+.ficha-serie__temporadas > * { margin: 0 16px 16px 0; }
+
+/* --- Rejilla de carátulas -------------------------------------------------- */
+
+.rejilla {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: var(--fondo);
+  padding: 36px 48px;
+  overflow-y: auto;
+}
+
+.rejilla__aviso { color: var(--texto-suave); font-size: 30px; margin: 40px 0; }
+.rejilla__cuenta { color: var(--texto-suave); font-size: 24px; margin: 0 0 20px; }
+
+.rejilla__lienzo {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  /* `gap` de GRID sí existe en Chrome 76 (llegó en la 57); el que falta es el de
+     flexbox, que es Chrome 84. Aquí se puede usar sin respaldo. */
+  gap: 28px 24px;
+}
+
+.tarjeta-cartel {
+  display: block;
+  border-radius: var(--radio);
+  padding: 8px;
+  border: 3px solid transparent;
+}
+
+.tarjeta-cartel[data-enfocado] {
+  border-color: var(--turquesa);
+  background: var(--superficie-alta);
+}
+
+.tarjeta-cartel__marco {
+  position: relative;
+  width: 100%;
+  /* Proporción 2:3, la del cartel de cine. `aspect-ratio` es Chrome 88 y la TV
+     es la 76, así que se hace con el truco del relleno porcentual: un
+     `padding-top` en % se calcula sobre el ANCHO, no sobre el alto. */
+  height: 0;
+  padding-top: 150%;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(150deg, var(--azul), #0d1b33);
+}
+
+.tarjeta-cartel__imagen {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tarjeta-cartel__vacia {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--texto);
+}
+
+.tarjeta-cartel__titulo {
+  margin: 12px 0 0;
+  font-size: 24px;
+  line-height: 1.25;
+  /* Dos líneas como mucho: un título largo empujaría su fila y rompería la
+     alineación de la rejilla. `-webkit-line-clamp` funciona en Chromium 76. */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tarjeta-cartel__meta { margin: 6px 0 0; font-size: 21px; color: var(--texto-suave); }
+
+.rejilla__paginas { display: flex; justify-content: center; margin-top: 36px; }
+
+.boton-secundario {
+  padding: 14px 32px;
+  font-size: 26px;
+  border: 2px solid var(--borde);
+  border-radius: 999px;
+  color: var(--texto-suave);
+}
+
+.boton-secundario[data-enfocado] {
+  border-color: var(--turquesa);
+  background: rgba(18, 194, 176, 0.14);
+  color: var(--turquesa);
+}
+
+/* --- Buscador de sección --------------------------------------------------- */
+
+.buscador { margin-bottom: 20px; }
+
+.buscador__campo {
+  display: flex;
+  align-items: center;
+  /* Acotado a propósito. A lo ancho de la rejilla —1400 px— su CENTRO queda a
+     la derecha de media pantalla, y la navegación es por geometría: pulsar
+     IZQUIERDA sobre él saltaba a una carátula que estaba visiblemente a la
+     derecha. Con 640 px el centro cae sobre la primera columna y el movimiento
+     es el que uno espera. Y una caja de búsqueda de pared a pared tampoco se
+     ve bien en un televisor. */
+  max-width: 640px;
+  padding: 16px 20px;
+  border: 2px solid var(--borde);
+  border-radius: var(--radio);
+  font-size: 26px;
+  color: var(--texto);
+}
+
+.buscador__campo[data-enfocado] { border-color: var(--turquesa); background: var(--superficie-alta); }
+.buscador__marcador { color: var(--texto-suave); }
+
+.buscador__limpiar {
+  margin-top: 12px;
+  padding: 10px 20px;
+  font-size: 22px;
+  color: var(--texto-suave);
+  border: 2px solid transparent;
+  border-radius: 999px;
+}
+
+.buscador__limpiar[data-enfocado] { border-color: var(--turquesa); color: var(--turquesa); }
+
+.buscador--abierto { background: var(--superficie); border-radius: var(--radio); padding: 20px; }
+
+.buscador__escrito {
+  margin: 0 0 18px;
+  font-size: 32px;
+  min-height: 40px;
+  color: var(--texto);
+  word-break: break-all;
+}
+
+.buscador__escrito.es-marcador { color: var(--texto-suave); }
+
+/* Se entra al teclado sin querer con facilidad, y sin esta línea no hay forma
+   de adivinar cómo se sale. */
+.buscador__ayuda {
+  margin: 16px 0 0;
+  font-size: 20px;
+  text-align: center;
+  color: var(--texto-suave);
+}
+
+/* --- Ficha de película y de serie ------------------------------------------ */
+
+.ficha, .ficha-serie {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: var(--fondo);
+  padding: 48px 56px;
+  overflow-y: auto;
+}
+
+.ficha { display: flex; }
+
+.ficha__cartel { width: 340px; flex-shrink: 0; }
+
+.ficha__imagen {
+  width: 340px;
+  height: 510px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: var(--sombra);
+}
+
+.ficha__imagen--vacia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 30px;
+  background: linear-gradient(150deg, var(--azul), #0d1b33);
+}
+
+.ficha__texto { flex: 1; }
+.ficha__titulo { margin: 0 0 14px; font-size: 52px; line-height: 1.15; }
+.ficha__datos { margin: 0 0 24px; font-size: 26px; color: var(--texto-suave); }
+.ficha__sinopsis { margin: 0 0 26px; font-size: 28px; line-height: 1.5; color: #c3cddc; }
+
+.ficha__sinopsis--corta {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ficha__credito { margin: 0 0 10px; font-size: 24px; color: var(--texto-suave); }
+.ficha__credito strong { color: var(--texto); font-weight: 600; }
+
+.boton-principal {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 18px 44px;
+  font-size: 30px;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background: rgba(18, 194, 176, 0.14);
+  color: var(--turquesa);
+}
+
+.boton-principal[data-enfocado] {
+  border-color: var(--turquesa);
+  background: var(--turquesa);
+  color: #04201d;
+}
+
+.ficha-serie__temporadas { display: flex; flex-wrap: wrap; margin: 28px 0 12px; }
+
+.ficha-temporada {
+  padding: 12px 28px;
+  font-size: 26px;
+  border: 2px solid var(--borde);
+  border-radius: 999px;
+  color: var(--texto-suave);
+}
+
+.ficha-temporada.es-activa { color: var(--turquesa); border-color: rgba(18, 194, 176, 0.4); }
+.ficha-temporada[data-enfocado] { border-color: var(--turquesa); background: var(--superficie-alta); }
+
+.episodio {
+  display: flex;
+  align-items: center;
+  padding: 18px 24px;
+  margin-bottom: 12px;
+  background: var(--superficie);
+  border-radius: 10px;
+  border: 3px solid transparent;
+  font-size: 26px;
+}
+
+.episodio[data-enfocado] { border-color: var(--turquesa); background: var(--superficie-alta); }
+.episodio__numero { width: 48px; color: var(--texto-suave); flex-shrink: 0; }
+.episodio__titulo { flex: 1; }
+.episodio__duracion { color: var(--texto-suave); font-size: 22px; }
+
+/* --- Progreso del vídeo bajo demanda --------------------------------------- */
+
+.progreso {
+  position: absolute;
+  left: 60px; right: 60px; bottom: 48px;
+  z-index: 6;
+  /* Degradado solo por debajo: da contraste al texto sin oscurecer el
+     fotograma entero. Ojo, esto es capa web sobre el plano de AVPlay. */
+  background: linear-gradient(to top, rgba(4, 8, 15, 0.92), rgba(4, 8, 15, 0));
+  padding: 28px 24px 20px;
+  border-radius: var(--radio);
+}
+
+.progreso__titulo { margin: 0 0 14px; font-size: 30px; font-weight: 600; }
+
+.progreso__barra {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  overflow: hidden;
+}
+
+.progreso__relleno { height: 100%; background: var(--turquesa); }
+.progreso__tiempo { margin: 12px 0 0; font-size: 24px; color: var(--texto-suave); }
+
+/* --- Selector de audio y subtítulos ---------------------------------------- */
+/* Panel a la derecha, del ancho de la lista de canales, para que no tape el
+   centro del fotograma mientras se elige. */
+
+.pistas {
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: var(--panel);
+  z-index: 8;
+  background: rgba(10, 14, 23, 0.97);
+  border-left: 1px solid var(--borde);
+  padding: 40px 36px;
+  overflow-y: auto;
+}
+
+.pistas__titulo { margin: 0 0 28px; font-size: 34px; }
+
+.pistas__grupo {
+  margin: 28px 0 12px;
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #5c6a83;
+}
+
+.pistas__opcion {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  border: 3px solid transparent;
+  font-size: 28px;
+  color: var(--texto-suave);
+}
+
+/* Margen, no `gap`: en flexbox no existe hasta Chrome 84 y la TV es la 76. */
+.pistas__opcion > * + * { margin-left: 18px; }
+
+.pistas__opcion.es-activa { color: var(--turquesa); }
+
+.pistas__opcion[data-enfocado] {
+  border-color: var(--turquesa);
+  background: var(--superficie-alta);
+}
+
+.pistas__marca { flex-shrink: 0; font-size: 22px; }
+.pistas__nombre { flex: 1; }
+
+.pistas__aviso { margin: 12px 0; font-size: 24px; color: var(--texto-suave); }
+
+.pistas__cerrar {
+  margin-top: 36px;
+  padding: 14px 28px;
+  text-align: center;
+  border: 2px solid var(--borde);
+  border-radius: 999px;
+  font-size: 26px;
+  color: var(--texto-suave);
+}
+
+.pistas__cerrar[data-enfocado] {
+  border-color: var(--turquesa);
+  background: var(--superficie-alta);
+  color: var(--turquesa);
+}
+
+.pistas__ayuda { margin-top: 16px; font-size: 20px; text-align: center; color: var(--texto-suave); }
+
+/* Botón que lo abre en directo, bajo el buscador de canales. */
+.panel__pistas {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  border: 2px solid var(--borde);
+  border-radius: var(--radio);
+  font-size: 24px;
+  color: var(--texto-suave);
+}
+
+.panel__pistas > * + * { margin-left: 14px; }
+
+.panel__pistas[data-enfocado] {
+  border-color: var(--turquesa);
+  background: var(--superficie-alta);
+}
+
+/* El fallo se centra en el hueco del vídeo: con la interfaz oculta es lo único
+   que hay en pantalla, y tiene que leerse a tres metros. */
+.reproductor__fallo {
+  position: absolute;
+  top: 50%; left: 0; right: 0;
+  transform: translateY(-50%);
+  text-align: center;
+  z-index: 6;
+}
+
+.reproductor__fallo .boton-secundario { display: inline-block; margin-top: 24px; }
+/* Se reafirma DESPUÉS del respaldo: `.canal > * + *` tiene la misma
+   especificidad y, al ir antes, le ganaría a este `auto` y la etiqueta de guía
+   dejaría de ir pegada a la derecha. */
+.canal__guia { margin-left: auto; }
+
